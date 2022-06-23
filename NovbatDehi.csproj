@@ -92,11 +92,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\General.cs" />
+    <Compile Include="Class\IniFile.cs" />
+    <Compile Include="Class\IniWork.cs" />
+    <Compile Include="Class\WebHelper.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginFom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginFom.designer.cs">
+      <DependentUpon>LoginFom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MsgBox.designer.cs">
+      <DependentUpon>MsgBox.cs</DependentUpon>
     </Compile>
     <Compile Include="tmp.cs">
       <SubType>Form</SubType>
@@ -109,6 +125,12 @@
     </EmbeddedResource>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="LoginFom.resx">
+      <DependentUpon>LoginFom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MsgBox.resx">
+      <DependentUpon>MsgBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -118,6 +140,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="tmp.resx">
       <DependentUpon>tmp.cs</DependentUpon>
@@ -138,6 +161,24 @@
   </ItemGroup>
   <ItemGroup>
     <!--sirinie -->
+    <None Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tik.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="RestSharp">
+      <Version>108.0.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

@@ -1,0 +1,10 @@
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.csproj.AssemblyReference.cache
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.frmMain.resources
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\BarcodeScaner_V2.LoginFom.resources
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\BarcodeScaner_V2.MsgBox.resources
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.Properties.Resources.resources
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.tmp.resources
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.csproj.GenerateResource.cache
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.exe.licenses
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.csproj.CoreCompileInputs.cache
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.LoginFom.resources
