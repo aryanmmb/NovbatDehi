@@ -44,12 +44,12 @@ public static class General
             if (File.Exists(fileFullName))
             {
                 File.Delete(fileFullName);
-                Logger.AddLog(" DeleteFile Filename:" + fileFullName + "   Time:" + DateTime.Now, LogType.Success);
+                //Logger.AddLog(" DeleteFile Filename:" + fileFullName + "   Time:" + DateTime.Now, LogType.Success);
             }
         }
         catch (Exception exception)
         {
-            Logger.AddLog("Error DeleteFile Filename:" + fileFullName + " exception:" + exception.Message + "   Time:" + DateTime.Now, LogType.Error);
+            //Logger.AddLog("Error DeleteFile Filename:" + fileFullName + " exception:" + exception.Message + "   Time:" + DateTime.Now, LogType.Error);
         }
     }
     public static int RandomNumber(int min, int max)
@@ -159,47 +159,7 @@ public enum MsgBoxButtonType
 {
     OK, YESNO
 }
-public static class SerialScratchExtensions
-{
-    internal static SerialScratchTmp ToSerialScratchTmp(this SerialScratch serial, string Type)
-    {
-        return new SerialScratchTmp()
-        {
-            bastehbandy = serial.bastehbandy,
-            status = serial.status,
-            date_sakht = serial.date_sakht,
-            date_vorod = serial.date_vorod,
-            kala_type = serial.kala_type,
-            scratch = serial.scratch,
-            serial = serial.serial,
-            sh_haml = serial.sh_haml,
-            used = serial.used,
-            vazeat_kala = serial.vazeat_kala,
-            factor_id = serial.factor_id,
-            In_Out = Type
-        };
-    }
-}
-public static class SerialScratchTmpExtensions
-{
-    internal static SerialScratch ToSerialScratch(this SerialScratchTmp serial)
-    {
-        return new SerialScratch()
-        {
-            bastehbandy = serial.bastehbandy,
-            status = serial.status,
-            date_sakht = serial.date_sakht,
-            date_vorod = serial.date_vorod,
-            kala_type = serial.kala_type,
-            scratch = serial.scratch,
-            serial = serial.serial,
-            sh_haml = serial.sh_haml,
-            used = serial.used,
-            vazeat_kala = serial.vazeat_kala,
-            factor_id = serial.factor_id,
-        };
-    }
-}
+ 
 public static class StringExtensions
 {
     public static Int32 ToInt(this string s)

@@ -40,9 +40,15 @@
     <Reference Include="BehComponents">
       <HintPath>..\Component\BehComponents.dll</HintPath>
     </Reference>
+    <Reference Include="BPersianCalender">
+      <HintPath>..\Component\BPersianCalender.dll</HintPath>
+    </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.37, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\BiosC#\BiosExtractor\Dll\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="MoreLinq">
+      <HintPath>..\Component\MoreLinq.dll</HintPath>
     </Reference>
     <Reference Include="Stimulsoft.Base, Version=2017.2.2.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -70,6 +76,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic">
+      <HintPath>..\Component\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -92,10 +101,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\CustomerDbHelper.cs" />
+    <Compile Include="Class\DbHelperBank.cs" />
+    <Compile Include="Class\DbManager.cs" />
     <Compile Include="Class\General.cs" />
     <Compile Include="Class\IniFile.cs" />
     <Compile Include="Class\IniWork.cs" />
+    <Compile Include="Class\MetaData.cs" />
     <Compile Include="Class\WebHelper.cs" />
+    <Compile Include="frmAddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddCustomer.Designer.cs">
+      <DependentUpon>frmAddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGetBimarList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGetBimarList.Designer.cs">
+      <DependentUpon>frmGetBimarList.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +145,12 @@
     <Compile Include="tmp.Designer.cs">
       <DependentUpon>tmp.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmAddCustomer.resx">
+      <DependentUpon>frmAddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGetBimarList.resx">
+      <DependentUpon>frmGetBimarList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +209,9 @@
   <ItemGroup>
     <PackageReference Include="RestSharp">
       <Version>108.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Configuration.ConfigurationManager">
+      <Version>6.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
