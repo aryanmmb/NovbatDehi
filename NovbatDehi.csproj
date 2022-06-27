@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,6 +13,7 @@
     <AssemblyName>NovbatDehi</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -47,8 +48,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\BiosC#\BiosExtractor\Dll\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
+    <Reference Include="MartinCostello.SqlLocalDb">
+      <HintPath>..\Component\MartinCostello.SqlLocalDb.dll</HintPath>
+    </Reference>
     <Reference Include="MoreLinq">
       <HintPath>..\Component\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=108.0.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Component\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="Stimulsoft.Base, Version=2017.2.2.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -79,6 +87,9 @@
     <Reference Include="System.Linq.Dynamic">
       <HintPath>..\Component\System.Linq.Dynamic.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -110,7 +121,13 @@
     <Compile Include="Class\IniFile.cs" />
     <Compile Include="Class\IniWork.cs" />
     <Compile Include="Class\MetaData.cs" />
+    <Compile Include="Class\SmsHelper.cs" />
     <Compile Include="Class\WebHelper.cs" />
+    <Compile Include="Connected Services\SmsServiceFaraz\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="frmAddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +232,13 @@
       <DependentUpon>tmp.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="Connected Services\SmsServiceFaraz\NovbatDehi.SmsServiceFaraz.GetCreditResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SmsServiceFaraz\NovbatDehi.SmsServiceFaraz.sendPatternSmsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SmsServiceFaraz\server.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -245,12 +269,27 @@
     <None Include="Resources\error.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="RestSharp">
-      <Version>108.0.1</Version>
-    </PackageReference>
     <PackageReference Include="System.Configuration.ConfigurationManager">
       <Version>6.0.0</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\SmsServiceFaraz\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SmsServiceFaraz\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SmsServiceFaraz\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SmsServiceFaraz\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

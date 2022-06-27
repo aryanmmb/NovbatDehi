@@ -35,11 +35,29 @@ namespace NovbatDehi
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            CreateConection();
+
             GetSetting();
 
             _myDbManager.Open_Db();
             CreatTodayReservation();
             RefreshData();
+        }
+
+        private void CreateConection()
+        {
+            try
+            {
+                DbManager.StartInstance("MSSQLLocalDB");
+                _myDbManager.Open_Db();
+                _myDbManager.Close_Db();
+            }
+            catch (Exception exception)
+            {
+                _myMessage.SetMsg(MsgBoxType.Error, "خطا در اتصال به پایگاه داده", MsgBoxButtonType.OK);
+                _myMessage.ShowDialog();
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void RefreshData()
@@ -210,6 +228,13 @@ namespace NovbatDehi
         private void buttonX4_Click(object sender, EventArgs e)
         {
             new frmBackupAndReplease().ShowDialog(this);
+        }
+
+        private void buttonX5_Click(object sender, EventArgs e)
+        {
+            string[] toNum = { "09188878609" };
+
+            SmsHelper.SendSms("1400/10/10", "08:00", "قباد خلیلی", toNum, SmsType.Reserv);
         }
     }
 }

@@ -12,8 +12,8 @@ namespace NovbatDehi.Class
             try
             {
                 _mydb.Open_Db();
-                string sql = "INSERT INTO  setting (timeFrom, timeUntil, numberofNovbat, backuppath, emailBackUpSend, AutoBackup)" +
-                "VALUES(@timeFrom, @timeUntil, @numberofNovbat, @backuppath, @emailBackUpSend, @AutoBackup)";
+                string sql = "INSERT INTO  setting (timeFrom, timeUntil, numberofNovbat, backuppath, emailBackUpSend, AutoBackup,SmsUsername,SmsPassword,SmsLine,PaternResend,PaternSend)" +
+                "VALUES(@timeFrom, @timeUntil, @numberofNovbat, @backuppath, @emailBackUpSend, @AutoBackup,@SmsUsername,@SmsPassword,@SmsLine,@PaternResend,@PaternSend)";
                 SqlCommand cmd = new SqlCommand(sql, _mydb.GetConnection_Db());
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@AutoBackup", setting.AutoBackup);
@@ -22,6 +22,12 @@ namespace NovbatDehi.Class
                 cmd.Parameters.AddWithValue("@numberofNovbat", setting.numberofNovbat);
                 cmd.Parameters.AddWithValue("@timeFrom", setting.timeFrom);
                 cmd.Parameters.AddWithValue("@timeUntil", setting.timeUntil);
+                cmd.Parameters.AddWithValue("@SmsPassword", setting.SmsPassword);
+                cmd.Parameters.AddWithValue("@SmsUsername", setting.SmsUsername);
+                cmd.Parameters.AddWithValue("@SmsLine", setting.SmsLine);
+                cmd.Parameters.AddWithValue("@PaternResend", setting.PaternResend);
+                cmd.Parameters.AddWithValue("@PaternSend", setting.PaternSend);
+
                 cmd.ExecuteNonQuery();
                 _mydb.Close_Db();
                 return true;
@@ -51,6 +57,12 @@ namespace NovbatDehi.Class
                         id = reader["id"].ToString().ToInt(),
                         timeFrom = reader["timeFrom"].ToString(),
                         timeUntil = reader["timeUntil"].ToString(),
+                        SmsPassword = reader["SmsPassword"].ToString(),
+                        SmsUsername = reader["SmsUsername"].ToString(),
+                        SmsLine = reader["SmsLine"].ToString(),
+                        PaternResend = reader["PaternResend"].ToString(),
+                        PaternSend = reader["PaternSend"].ToString(),
+
                     };
                 }
                 else
@@ -81,7 +93,8 @@ namespace NovbatDehi.Class
             {
                 _mydb.Open_Db();
                 string sql = "UPDATE setting   SET timeFrom = @timeFrom, timeUntil = @timeUntil," +
-                " numberofNovbat = @numberofNovbat, backuppath = @backuppath, emailBackUpSend = @emailBackUpSend, AutoBackup = @AutoBackup";
+                " numberofNovbat = @numberofNovbat, backuppath = @backuppath, emailBackUpSend = @emailBackUpSend, AutoBackup = @AutoBackup,SmsPassword=@SmsPassword" + "" +
+                ",SmsUsername=@SmsUsername,SmsLine=@SmsLine,PaternResend=@PaternResend,PaternSend=@PaternSend ";
                 SqlCommand cmd = new SqlCommand(sql, _mydb.GetConnection_Db());
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@AutoBackup", setting.AutoBackup);
@@ -90,6 +103,11 @@ namespace NovbatDehi.Class
                 cmd.Parameters.AddWithValue("@numberofNovbat", setting.numberofNovbat);
                 cmd.Parameters.AddWithValue("@timeFrom", setting.timeFrom);
                 cmd.Parameters.AddWithValue("@timeUntil", setting.timeUntil);
+                cmd.Parameters.AddWithValue("@SmsPassword", setting.SmsPassword);
+                cmd.Parameters.AddWithValue("@SmsUsername", setting.SmsUsername);
+                cmd.Parameters.AddWithValue("@SmsLine", setting.SmsLine);
+                cmd.Parameters.AddWithValue("@PaternResend", setting.PaternResend);
+                cmd.Parameters.AddWithValue("@PaternSend", setting.PaternSend);
                 cmd.ExecuteNonQuery();
                 _mydb.Close_Db();
                 return true;

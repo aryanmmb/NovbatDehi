@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.CheckFirstCome = new System.Windows.Forms.CheckBox();
             this.lbl_BimehCode = new System.Windows.Forms.Label();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.checkboxSMS = new System.Windows.Forms.CheckBox();
@@ -41,9 +44,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBimar = new System.Windows.Forms.TextBox();
-            this.CheckFirstCome = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtNote = new System.Windows.Forms.TextBox();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -105,6 +105,37 @@
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Location = new System.Drawing.Point(261, 246);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 25);
+            this.label3.TabIndex = 96;
+            this.label3.Text = "یاد داشت ";
+            // 
+            // txtNote
+            // 
+            this.txtNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNote.Location = new System.Drawing.Point(3, 242);
+            this.txtNote.MaxLength = 200;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.Size = new System.Drawing.Size(252, 33);
+            this.txtNote.TabIndex = 97;
+            // 
+            // CheckFirstCome
+            // 
+            this.CheckFirstCome.AutoSize = true;
+            this.CheckFirstCome.Location = new System.Drawing.Point(65, 281);
+            this.CheckFirstCome.Name = "CheckFirstCome";
+            this.CheckFirstCome.Size = new System.Drawing.Size(173, 29);
+            this.CheckFirstCome.TabIndex = 95;
+            this.CheckFirstCome.Text = "بیمار مراجعه اول است";
+            this.CheckFirstCome.UseVisualStyleBackColor = true;
             // 
             // lbl_BimehCode
             // 
@@ -249,37 +280,6 @@
             this.txtBimar.DoubleClick += new System.EventHandler(this.txtBimar_DoubleClick);
             this.txtBimar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.key_KeyDown);
             // 
-            // CheckFirstCome
-            // 
-            this.CheckFirstCome.AutoSize = true;
-            this.CheckFirstCome.Location = new System.Drawing.Point(65, 281);
-            this.CheckFirstCome.Name = "CheckFirstCome";
-            this.CheckFirstCome.Size = new System.Drawing.Size(173, 29);
-            this.CheckFirstCome.TabIndex = 95;
-            this.CheckFirstCome.Text = "بیمار مراجعه اول است";
-            this.CheckFirstCome.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(261, 246);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 25);
-            this.label3.TabIndex = 96;
-            this.label3.Text = "یاد داشت ";
-            // 
-            // txtNote
-            // 
-            this.txtNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNote.Location = new System.Drawing.Point(3, 242);
-            this.txtNote.MaxLength = 200;
-            this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(252, 33);
-            this.txtNote.TabIndex = 97;
-            // 
             // frmAddReserve
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,6 +291,7 @@
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ثبت رزرو";
             this.ThemeName = "ControlDefault";
             this.Load += new System.EventHandler(this.frmAddReserve_Load);

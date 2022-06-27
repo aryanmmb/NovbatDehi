@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.checkDuplicateCode = new System.Windows.Forms.CheckBox();
+            this.todatedate = new BPersianCalender.BPersianCalenderTextBox();
+            this.btnGetCode = new DevComponents.DotNetBar.ButtonX();
             this.btnPrint = new DevComponents.DotNetBar.ButtonX();
             this.btnEdit = new DevComponents.DotNetBar.ButtonX();
             this.btnDelete = new DevComponents.DotNetBar.ButtonX();
@@ -37,6 +40,13 @@
             this.txtcode = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.DbGrideCustomer = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.irCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bimeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastUpdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtbirthDate = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txttozihat = new System.Windows.Forms.TextBox();
@@ -53,16 +63,6 @@
             this.txtirCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtfullname = new System.Windows.Forms.TextBox();
-            this.btnGetCode = new DevComponents.DotNetBar.ButtonX();
-            this.todatedate = new BPersianCalender.BPersianCalenderTextBox();
-            this.checkDuplicateCode = new System.Windows.Forms.CheckBox();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.irCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bimeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastUpdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DbGrideCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -136,6 +136,53 @@
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 0;
+            // 
+            // checkDuplicateCode
+            // 
+            this.checkDuplicateCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkDuplicateCode.AutoSize = true;
+            this.checkDuplicateCode.BackColor = System.Drawing.Color.Transparent;
+            this.checkDuplicateCode.Location = new System.Drawing.Point(509, 516);
+            this.checkDuplicateCode.Name = "checkDuplicateCode";
+            this.checkDuplicateCode.Size = new System.Drawing.Size(172, 29);
+            this.checkDuplicateCode.TabIndex = 96;
+            this.checkDuplicateCode.Text = "ثبت کد پرونده تکراری";
+            this.checkDuplicateCode.UseVisualStyleBackColor = false;
+            // 
+            // todatedate
+            // 
+            this.todatedate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.todatedate.Font = new System.Drawing.Font("B Mitra", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.todatedate.Location = new System.Drawing.Point(342, 516);
+            this.todatedate.Miladi = new System.DateTime(((long)(0)));
+            this.todatedate.Name = "todatedate";
+            this.todatedate.NowDateSelected = false;
+            this.todatedate.ReadOnly = true;
+            this.todatedate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.todatedate.SelectedDate = null;
+            this.todatedate.Shamsi = null;
+            this.todatedate.Size = new System.Drawing.Size(138, 30);
+            this.todatedate.TabIndex = 95;
+            this.todatedate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.todatedate.Visible = false;
+            // 
+            // btnGetCode
+            // 
+            this.btnGetCode.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnGetCode.BackColor = System.Drawing.Color.Transparent;
+            this.btnGetCode.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnGetCode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGetCode.Font = new System.Drawing.Font("IRANSans", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGetCode.Location = new System.Drawing.Point(6, 2);
+            this.btnGetCode.Name = "btnGetCode";
+            this.btnGetCode.Shape = new DevComponents.DotNetBar.EllipticalShapeDescriptor();
+            this.btnGetCode.Size = new System.Drawing.Size(35, 35);
+            this.btnGetCode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnGetCode.Symbol = "";
+            this.btnGetCode.SymbolColor = System.Drawing.Color.DarkGreen;
+            this.btnGetCode.SymbolSize = 15F;
+            this.btnGetCode.TabIndex = 94;
+            this.btnGetCode.Click += new System.EventHandler(this.buttonX1_Click_1);
             // 
             // btnPrint
             // 
@@ -249,6 +296,52 @@
             this.DbGrideCustomer.StandardTab = true;
             this.DbGrideCustomer.TabIndex = 3;
             this.DbGrideCustomer.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DbGrideCustomer_ColumnHeaderMouseClick);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "کد";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // code
+            // 
+            this.code.DataPropertyName = "code";
+            this.code.HeaderText = "کد پرونده";
+            this.code.Name = "code";
+            // 
+            // fullname
+            // 
+            this.fullname.DataPropertyName = "fullname";
+            this.fullname.HeaderText = "نام بیمار";
+            this.fullname.Name = "fullname";
+            this.fullname.Width = 200;
+            // 
+            // mobile
+            // 
+            this.mobile.DataPropertyName = "mobile";
+            this.mobile.HeaderText = "شماره تماس";
+            this.mobile.Name = "mobile";
+            this.mobile.Width = 150;
+            // 
+            // irCode
+            // 
+            this.irCode.DataPropertyName = "irCode";
+            this.irCode.HeaderText = "کد ملی";
+            this.irCode.Name = "irCode";
+            // 
+            // bimeCode
+            // 
+            this.bimeCode.DataPropertyName = "bimeCode";
+            this.bimeCode.HeaderText = "کد بیمه";
+            this.bimeCode.Name = "bimeCode";
+            // 
+            // lastUpdate
+            // 
+            this.lastUpdate.DataPropertyName = "lastUpdate";
+            this.lastUpdate.HeaderText = "آخرین بروز رسانی";
+            this.lastUpdate.Name = "lastUpdate";
+            this.lastUpdate.Width = 150;
             // 
             // txtbirthDate
             // 
@@ -394,99 +487,6 @@
             this.txtfullname.Size = new System.Drawing.Size(365, 33);
             this.txtfullname.TabIndex = 1;
             // 
-            // btnGetCode
-            // 
-            this.btnGetCode.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnGetCode.BackColor = System.Drawing.Color.Transparent;
-            this.btnGetCode.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnGetCode.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGetCode.Font = new System.Drawing.Font("IRANSans", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetCode.Location = new System.Drawing.Point(6, 2);
-            this.btnGetCode.Name = "btnGetCode";
-            this.btnGetCode.Shape = new DevComponents.DotNetBar.EllipticalShapeDescriptor();
-            this.btnGetCode.Size = new System.Drawing.Size(35, 35);
-            this.btnGetCode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnGetCode.Symbol = "";
-            this.btnGetCode.SymbolColor = System.Drawing.Color.DarkGreen;
-            this.btnGetCode.SymbolSize = 15F;
-            this.btnGetCode.TabIndex = 94;
-            this.btnGetCode.Click += new System.EventHandler(this.buttonX1_Click_1);
-            // 
-            // todatedate
-            // 
-            this.todatedate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.todatedate.Font = new System.Drawing.Font("B Mitra", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.todatedate.Location = new System.Drawing.Point(342, 516);
-            this.todatedate.Miladi = new System.DateTime(((long)(0)));
-            this.todatedate.Name = "todatedate";
-            this.todatedate.NowDateSelected = false;
-            this.todatedate.ReadOnly = true;
-            this.todatedate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.todatedate.SelectedDate = null;
-            this.todatedate.Shamsi = null;
-            this.todatedate.Size = new System.Drawing.Size(138, 30);
-            this.todatedate.TabIndex = 95;
-            this.todatedate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.todatedate.Visible = false;
-            // 
-            // checkDuplicateCode
-            // 
-            this.checkDuplicateCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkDuplicateCode.AutoSize = true;
-            this.checkDuplicateCode.BackColor = System.Drawing.Color.Transparent;
-            this.checkDuplicateCode.Location = new System.Drawing.Point(509, 516);
-            this.checkDuplicateCode.Name = "checkDuplicateCode";
-            this.checkDuplicateCode.Size = new System.Drawing.Size(172, 29);
-            this.checkDuplicateCode.TabIndex = 96;
-            this.checkDuplicateCode.Text = "ثبت کد پرونده تکراری";
-            this.checkDuplicateCode.UseVisualStyleBackColor = false;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "کد";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // code
-            // 
-            this.code.DataPropertyName = "code";
-            this.code.HeaderText = "کد پرونده";
-            this.code.Name = "code";
-            // 
-            // fullname
-            // 
-            this.fullname.DataPropertyName = "fullname";
-            this.fullname.HeaderText = "نام بیمار";
-            this.fullname.Name = "fullname";
-            this.fullname.Width = 200;
-            // 
-            // mobile
-            // 
-            this.mobile.DataPropertyName = "mobile";
-            this.mobile.HeaderText = "شماره تماس";
-            this.mobile.Name = "mobile";
-            this.mobile.Width = 150;
-            // 
-            // irCode
-            // 
-            this.irCode.DataPropertyName = "irCode";
-            this.irCode.HeaderText = "کد ملی";
-            this.irCode.Name = "irCode";
-            // 
-            // bimeCode
-            // 
-            this.bimeCode.DataPropertyName = "bimeCode";
-            this.bimeCode.HeaderText = "کد بیمه";
-            this.bimeCode.Name = "bimeCode";
-            // 
-            // lastUpdate
-            // 
-            this.lastUpdate.DataPropertyName = "lastUpdate";
-            this.lastUpdate.HeaderText = "آخرین بروز رسانی";
-            this.lastUpdate.Name = "lastUpdate";
-            this.lastUpdate.Width = 150;
-            // 
             // frmAddCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -500,6 +500,7 @@
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "افزودن بیمار";
             this.ThemeName = "ControlDefault";
             this.Load += new System.EventHandler(this.frmAddCustomer_Load);

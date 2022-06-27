@@ -223,6 +223,7 @@
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "لیست بیماران";
             this.ThemeName = "ControlDefault";
             this.Load += new System.EventHandler(this.frmGetBimarList_Load);

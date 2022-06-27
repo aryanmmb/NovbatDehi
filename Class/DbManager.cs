@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MartinCostello.SqlLocalDb;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -100,7 +101,54 @@ namespace NovbatDehi.Class
             }
         }
 
+        /// <summary>
+        /// تابع ساخت و یا اسارت Server
+        /// </summary>
+        /// <param name="instanceName">نام سرور</param>
+        /// <returns></returns>
+        public static string StartInstance(string instanceName)
+        {
+            try
+            {
+                var localDb = new SqlLocalDbApi();
+                ISqlLocalDbInstanceInfo instance = localDb.GetOrCreateInstance(instanceName);
+                ISqlLocalDbInstanceManager manager = instance.Manage();
+                if (!instance.IsRunning)
+                {
+                    manager.Start();
+                }
+                return "OK";
+            }
+            catch (Exception exception)
+            {
+                return "NO";
+            }
 
+        }
+        /// <summary>
+        /// تابع توقف   Server
+        /// </summary>
+        /// <param name="instanceName">نام سرور</param>
+        /// <returns></returns>
+        public static string StopInstance(string instanceName)
+        {
+            try
+            {
+                var localDb = new SqlLocalDbApi();
+                ISqlLocalDbInstanceInfo instance = localDb.GetOrCreateInstance(instanceName);
+                ISqlLocalDbInstanceManager manager = instance.Manage();
+                if (instance.IsRunning)
+                {
+                    manager.Stop();
+                }
+                return "OK";
+            }
+            catch (Exception exception)
+            {
+                return "NO";
+            }
+
+        }
     }
     #endregion
 

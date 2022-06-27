@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using BarcodeScaner_V2;
 using NovbatDehi.Class;
 using Telerik.WinControls;
 
@@ -14,6 +15,8 @@ namespace NovbatDehi
 {
     public partial class frmAddReserve : Telerik.WinControls.UI.RadForm
     {
+        private readonly MsgBox _myMessage = new MsgBox();
+
         private Customer mycustomer;
         public Reservations MyReservations;
         private DbHelperCustomers myDbHelperCustomers = new DbHelperCustomers();
@@ -24,7 +27,7 @@ namespace NovbatDehi
 
         private void frmAddReserve_Load(object sender, EventArgs e)
         {
-   
+
             if (MyReservations != null)
             {
                 txtBimar.Text = MyReservations.fullname == "..." ? "" : MyReservations.fullname;
@@ -70,8 +73,32 @@ namespace NovbatDehi
             MyReservations.customer_id = mycustomer == null ? 0 : mycustomer.id;
             MyReservations.note = txtNote.Text.Trim() == "" ? "..." : txtNote.Text.Trim();
             MyReservations.mobile = mycustomer == null ? "..." : mycustomer.mobile;
-            
-            MyReservations.FirstCome =!CheckFirstCome.Checked ? "..." : "مراجعه اول";
+
+            MyReservations.FirstCome = !CheckFirstCome.Checked ? "..." : "مراجعه اول";
+            if (checkboxSMS.Checked)
+            {
+                if (MyReservations.mobile == "..." || MyReservations.mobile == "")
+                {
+                    _myMessage.SetMsg(MsgBoxType.Information, "برای ارسال پیام حتما باید شماره موبایل ثبت شود", MsgBoxButtonType.OK);
+                    _myMessage.ShowDialog();
+                    return;
+                }
+
+                string[] toNum = { MyReservations.mobile };
+                var flag = SmsHelper.SendSms(MyReservations.date, MyReservations.time, MyReservations.fullname, toNum, SmsType.Reserv);
+                if (flag == true)
+                {
+                    _myMessage.SetMsg(MsgBoxType.Information, "پیام رزور ارسال شد", MsgBoxButtonType.OK);
+                    _myMessage.ShowDialog();
+
+                }
+                else
+                {
+                    _myMessage.SetMsg(MsgBoxType.Information, "پیام رزور ارسال نشد", MsgBoxButtonType.OK);
+                    _myMessage.ShowDialog();
+                }
+            }
+
             Close();
         }
 

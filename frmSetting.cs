@@ -43,6 +43,11 @@ namespace NovbatDehi
                 CheckAutoBAckup.Checked = MySetting.AutoBackup;
                 backupPath.Text = MySetting.backuppath;
                 EmailAddress.Text = MySetting.emailBackUpSend;
+                SmsLine.Text = MySetting.SmsLine;
+                SmsPassword.Text = MySetting.SmsPassword;
+                SmsUsername.Text = MySetting.SmsUsername;
+                PaternResend.Text = MySetting.PaternResend;
+                PaternSend.Text = MySetting.PaternSend;
             }
         }
 
@@ -63,6 +68,11 @@ namespace NovbatDehi
                 MySetting.AutoBackup = CheckAutoBAckup.Checked;
                 MySetting.backuppath = backupPath.Text;
                 MySetting.emailBackUpSend = EmailAddress.Text;
+                MySetting.SmsLine = SmsLine.Text;
+                MySetting.SmsPassword = SmsPassword.Text;
+                MySetting.SmsUsername = SmsUsername.Text;
+                MySetting.PaternResend = PaternResend.Text;
+                MySetting.PaternSend = PaternSend.Text;
 
                 bool flag = myDbHelperSetting.Update(MySetting.id, MySetting);
                 if (flag)

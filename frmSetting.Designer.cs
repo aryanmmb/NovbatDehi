@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.EmailAddress = new System.Windows.Forms.TextBox();
+            this.backupPath = new System.Windows.Forms.TextBox();
+            this.numberofNovbat = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.CheckAutoBAckup = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
@@ -38,11 +42,19 @@
             this.timeFrom = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.LblCount = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.numberofNovbat = new System.Windows.Forms.TextBox();
-            this.backupPath = new System.Windows.Forms.TextBox();
-            this.EmailAddress = new System.Windows.Forms.TextBox();
+            this.SmsUsername = new System.Windows.Forms.TextBox();
+            this.SmsPassword = new System.Windows.Forms.TextBox();
+            this.SmsLine = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.PaternSend = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.PaternResend = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupPanel1.SuspendLayout();
+            this.groupPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +66,7 @@
             this.groupPanel1.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.groupPanel2);
             this.groupPanel1.Controls.Add(this.EmailAddress);
             this.groupPanel1.Controls.Add(this.backupPath);
             this.groupPanel1.Controls.Add(this.numberofNovbat);
@@ -71,8 +84,7 @@
             this.groupPanel1.Font = new System.Drawing.Font("Dirooz FD", 8.25F);
             this.groupPanel1.Location = new System.Drawing.Point(5, 3);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.groupPanel1.Size = new System.Drawing.Size(596, 268);
+            this.groupPanel1.Size = new System.Drawing.Size(596, 323);
             // 
             // 
             // 
@@ -104,10 +116,47 @@
             this.groupPanel1.TabIndex = 25;
             this.groupPanel1.Text = "مدیریت";
             // 
+            // EmailAddress
+            // 
+            this.EmailAddress.Location = new System.Drawing.Point(4, 65);
+            this.EmailAddress.MaxLength = 1000;
+            this.EmailAddress.Name = "EmailAddress";
+            this.EmailAddress.Size = new System.Drawing.Size(408, 26);
+            this.EmailAddress.TabIndex = 23;
+            // 
+            // backupPath
+            // 
+            this.backupPath.Location = new System.Drawing.Point(201, 33);
+            this.backupPath.MaxLength = 1000;
+            this.backupPath.Name = "backupPath";
+            this.backupPath.Size = new System.Drawing.Size(211, 26);
+            this.backupPath.TabIndex = 22;
+            // 
+            // numberofNovbat
+            // 
+            this.numberofNovbat.Location = new System.Drawing.Point(140, 1);
+            this.numberofNovbat.MaxLength = 1;
+            this.numberofNovbat.Name = "numberofNovbat";
+            this.numberofNovbat.Size = new System.Drawing.Size(36, 26);
+            this.numberofNovbat.TabIndex = 21;
+            this.numberofNovbat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Dirooz FD", 8.25F);
+            this.label3.Location = new System.Drawing.Point(182, 4);
+            this.label3.Name = "label3";
+            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label3.Size = new System.Drawing.Size(79, 19);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "تعداد نوبت اولیه";
+            // 
             // CheckAutoBAckup
             // 
             this.CheckAutoBAckup.AutoSize = true;
-            this.CheckAutoBAckup.Location = new System.Drawing.Point(392, 107);
+            this.CheckAutoBAckup.Location = new System.Drawing.Point(4, 33);
             this.CheckAutoBAckup.Name = "CheckAutoBAckup";
             this.CheckAutoBAckup.Size = new System.Drawing.Size(192, 23);
             this.CheckAutoBAckup.TabIndex = 19;
@@ -150,7 +199,7 @@
             this.btnLogin.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.Font = new System.Drawing.Font("Dirooz FD", 8.25F);
-            this.btnLogin.Location = new System.Drawing.Point(4, 198);
+            this.btnLogin.Location = new System.Drawing.Point(4, 253);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(580, 40);
             this.btnLogin.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -215,48 +264,160 @@
             this.LblCount.Size = new System.Drawing.Size(0, 23);
             this.LblCount.TabIndex = 6;
             // 
-            // label3
+            // SmsUsername
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Dirooz FD", 8.25F);
-            this.label3.Location = new System.Drawing.Point(182, 4);
-            this.label3.Name = "label3";
-            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label3.Size = new System.Drawing.Size(79, 19);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "تعداد نوبت اولیه";
+            this.SmsUsername.Location = new System.Drawing.Point(13, 3);
+            this.SmsUsername.MaxLength = 200;
+            this.SmsUsername.Name = "SmsUsername";
+            this.SmsUsername.Size = new System.Drawing.Size(127, 26);
+            this.SmsUsername.TabIndex = 24;
             // 
-            // numberofNovbat
+            // SmsPassword
             // 
-            this.numberofNovbat.Location = new System.Drawing.Point(140, 1);
-            this.numberofNovbat.MaxLength = 1;
-            this.numberofNovbat.Name = "numberofNovbat";
-            this.numberofNovbat.Size = new System.Drawing.Size(36, 26);
-            this.numberofNovbat.TabIndex = 21;
-            this.numberofNovbat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.SmsPassword.Location = new System.Drawing.Point(13, 35);
+            this.SmsPassword.MaxLength = 200;
+            this.SmsPassword.Name = "SmsPassword";
+            this.SmsPassword.Size = new System.Drawing.Size(127, 26);
+            this.SmsPassword.TabIndex = 25;
             // 
-            // backupPath
+            // SmsLine
             // 
-            this.backupPath.Location = new System.Drawing.Point(4, 33);
-            this.backupPath.MaxLength = 1;
-            this.backupPath.Name = "backupPath";
-            this.backupPath.Size = new System.Drawing.Size(408, 26);
-            this.backupPath.TabIndex = 22;
+            this.SmsLine.Location = new System.Drawing.Point(12, 67);
+            this.SmsLine.MaxLength = 100;
+            this.SmsLine.Name = "SmsLine";
+            this.SmsLine.Size = new System.Drawing.Size(127, 26);
+            this.SmsLine.TabIndex = 26;
             // 
-            // EmailAddress
+            // label5
             // 
-            this.EmailAddress.Location = new System.Drawing.Point(4, 65);
-            this.EmailAddress.MaxLength = 1;
-            this.EmailAddress.Name = "EmailAddress";
-            this.EmailAddress.Size = new System.Drawing.Size(408, 26);
-            this.EmailAddress.TabIndex = 23;
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Dirooz FD", 8.25F);
+            this.label5.Location = new System.Drawing.Point(149, 7);
+            this.label5.Name = "label5";
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label5.Size = new System.Drawing.Size(88, 19);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "نام کاربری (SMS)";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Dirooz FD", 8.25F);
+            this.label6.Location = new System.Drawing.Point(149, 39);
+            this.label6.Name = "label6";
+            this.label6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label6.Size = new System.Drawing.Size(79, 19);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "رمز عبور (SMS)";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Dirooz FD", 8.25F);
+            this.label7.Location = new System.Drawing.Point(149, 71);
+            this.label7.Name = "label7";
+            this.label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label7.Size = new System.Drawing.Size(87, 19);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "خط ارسال (SMS)";
+            // 
+            // groupPanel2
+            // 
+            this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel2.Controls.Add(this.PaternResend);
+            this.groupPanel2.Controls.Add(this.label9);
+            this.groupPanel2.Controls.Add(this.PaternSend);
+            this.groupPanel2.Controls.Add(this.label8);
+            this.groupPanel2.Controls.Add(this.SmsUsername);
+            this.groupPanel2.Controls.Add(this.label7);
+            this.groupPanel2.Controls.Add(this.SmsPassword);
+            this.groupPanel2.Controls.Add(this.label6);
+            this.groupPanel2.Controls.Add(this.SmsLine);
+            this.groupPanel2.Controls.Add(this.label5);
+            this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
+            this.groupPanel2.Location = new System.Drawing.Point(4, 101);
+            this.groupPanel2.Name = "groupPanel2";
+            this.groupPanel2.Size = new System.Drawing.Size(580, 132);
+            // 
+            // 
+            // 
+            this.groupPanel2.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.groupPanel2.Style.BackColorGradientAngle = 90;
+            this.groupPanel2.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.groupPanel2.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel2.Style.BorderBottomWidth = 1;
+            this.groupPanel2.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.groupPanel2.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel2.Style.BorderLeftWidth = 1;
+            this.groupPanel2.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel2.Style.BorderRightWidth = 1;
+            this.groupPanel2.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel2.Style.BorderTopWidth = 1;
+            this.groupPanel2.Style.CornerDiameter = 4;
+            this.groupPanel2.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanel2.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.groupPanel2.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.groupPanel2.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            // 
+            // 
+            // 
+            this.groupPanel2.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.groupPanel2.TabIndex = 30;
+            this.groupPanel2.Text = "تنظیمات پنل پیامک";
+            // 
+            // PaternSend
+            // 
+            this.PaternSend.Location = new System.Drawing.Point(321, 7);
+            this.PaternSend.MaxLength = 200;
+            this.PaternSend.Name = "PaternSend";
+            this.PaternSend.Size = new System.Drawing.Size(127, 26);
+            this.PaternSend.TabIndex = 30;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Dirooz FD", 8.25F);
+            this.label8.Location = new System.Drawing.Point(457, 11);
+            this.label8.Name = "label8";
+            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label8.Size = new System.Drawing.Size(57, 19);
+            this.label8.TabIndex = 31;
+            this.label8.Text = "پترن ارسال";
+            // 
+            // PaternResend
+            // 
+            this.PaternResend.Location = new System.Drawing.Point(321, 42);
+            this.PaternResend.MaxLength = 200;
+            this.PaternResend.Name = "PaternResend";
+            this.PaternResend.Size = new System.Drawing.Size(127, 26);
+            this.PaternResend.TabIndex = 32;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Dirooz FD", 8.25F);
+            this.label9.Location = new System.Drawing.Point(457, 46);
+            this.label9.Name = "label9";
+            this.label9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label9.Size = new System.Drawing.Size(67, 19);
+            this.label9.TabIndex = 33;
+            this.label9.Text = "پترن یاد آوری";
             // 
             // frmSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 273);
+            this.ClientSize = new System.Drawing.Size(604, 328);
             this.Controls.Add(this.groupPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmSetting";
@@ -270,6 +431,8 @@
             this.Load += new System.EventHandler(this.frmSetting_Load);
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel1.PerformLayout();
+            this.groupPanel2.ResumeLayout(false);
+            this.groupPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -291,5 +454,16 @@
         private System.Windows.Forms.TextBox numberofNovbat;
         private System.Windows.Forms.TextBox EmailAddress;
         private System.Windows.Forms.TextBox backupPath;
+        private System.Windows.Forms.TextBox SmsLine;
+        private System.Windows.Forms.TextBox SmsPassword;
+        private System.Windows.Forms.TextBox SmsUsername;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
+        private System.Windows.Forms.TextBox PaternResend;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox PaternSend;
+        private System.Windows.Forms.Label label8;
     }
 }
