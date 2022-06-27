@@ -50,3 +50,8 @@ I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\bin\Debug\Telerik.WinControls.U
 I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.csproj.CopyComplete
 I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.exe
 I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.pdb
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.csproj.AssemblyReference.cache
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.frmAddReserve.resources
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.frmSetting.resources
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.frmBackupAndReplease.resources
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.frmProfileCustomer.resources

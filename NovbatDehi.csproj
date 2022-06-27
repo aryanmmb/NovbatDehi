@@ -102,6 +102,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\CustomerDbHelper.cs" />
+    <Compile Include="Class\DbHelperSetting.cs" />
+    <Compile Include="Class\DbHelperReservations.cs" />
     <Compile Include="Class\DbHelperBank.cs" />
     <Compile Include="Class\DbManager.cs" />
     <Compile Include="Class\General.cs" />
@@ -115,6 +117,18 @@
     <Compile Include="frmAddCustomer.Designer.cs">
       <DependentUpon>frmAddCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddReserve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddReserve.Designer.cs">
+      <DependentUpon>frmAddReserve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBackupAndReplease.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBackupAndReplease.Designer.cs">
+      <DependentUpon>frmBackupAndReplease.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGetBimarList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +140,18 @@
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProfileCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProfileCustomer.Designer.cs">
+      <DependentUpon>frmProfileCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetting.Designer.cs">
+      <DependentUpon>frmSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginFom.cs">
       <SubType>Form</SubType>
@@ -148,6 +174,12 @@
     <EmbeddedResource Include="frmAddCustomer.resx">
       <DependentUpon>frmAddCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddReserve.resx">
+      <DependentUpon>frmAddReserve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBackupAndReplease.resx">
+      <DependentUpon>frmBackupAndReplease.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGetBimarList.resx">
       <DependentUpon>frmGetBimarList.cs</DependentUpon>
     </EmbeddedResource>
@@ -156,6 +188,12 @@
     </EmbeddedResource>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmProfileCustomer.resx">
+      <DependentUpon>frmProfileCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetting.resx">
+      <DependentUpon>frmSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginFom.resx">
       <DependentUpon>LoginFom.cs</DependentUpon>
     </EmbeddedResource>

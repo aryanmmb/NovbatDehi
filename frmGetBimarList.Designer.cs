@@ -31,8 +31,6 @@
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.DbGrideCustomer = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.key = new System.Windows.Forms.TextBox();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +38,8 @@
             this.irCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bimeCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastUpdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.key = new System.Windows.Forms.TextBox();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DbGrideCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -57,7 +57,7 @@
             this.groupPanel1.Controls.Add(this.label1);
             this.groupPanel1.Controls.Add(this.key);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel1.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupPanel1.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupPanel1.Location = new System.Drawing.Point(2, 6);
             this.groupPanel1.Name = "groupPanel1";
             this.groupPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -130,10 +130,66 @@
             this.bimeCode,
             this.lastUpdate});
             this.DbGrideCustomer.Location = new System.Drawing.Point(12, 42);
+            this.DbGrideCustomer.MultiSelect = false;
             this.DbGrideCustomer.Name = "DbGrideCustomer";
+            this.DbGrideCustomer.ReadOnly = true;
             this.DbGrideCustomer.RowHeadersVisible = false;
+            this.DbGrideCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DbGrideCustomer.Size = new System.Drawing.Size(803, 356);
             this.DbGrideCustomer.TabIndex = 3;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "کد";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // code
+            // 
+            this.code.DataPropertyName = "code";
+            this.code.HeaderText = "کد پرونده";
+            this.code.Name = "code";
+            this.code.ReadOnly = true;
+            // 
+            // fullname
+            // 
+            this.fullname.DataPropertyName = "fullname";
+            this.fullname.HeaderText = "نام بیمار";
+            this.fullname.Name = "fullname";
+            this.fullname.ReadOnly = true;
+            this.fullname.Width = 200;
+            // 
+            // mobile
+            // 
+            this.mobile.DataPropertyName = "mobile";
+            this.mobile.HeaderText = "شماره تماس";
+            this.mobile.Name = "mobile";
+            this.mobile.ReadOnly = true;
+            this.mobile.Width = 150;
+            // 
+            // irCode
+            // 
+            this.irCode.DataPropertyName = "irCode";
+            this.irCode.HeaderText = "کد ملی";
+            this.irCode.Name = "irCode";
+            this.irCode.ReadOnly = true;
+            // 
+            // bimeCode
+            // 
+            this.bimeCode.DataPropertyName = "bimeCode";
+            this.bimeCode.HeaderText = "کد بیمه";
+            this.bimeCode.Name = "bimeCode";
+            this.bimeCode.ReadOnly = true;
+            // 
+            // lastUpdate
+            // 
+            this.lastUpdate.DataPropertyName = "lastUpdate";
+            this.lastUpdate.HeaderText = "آخرین بروز رسانی";
+            this.lastUpdate.Name = "lastUpdate";
+            this.lastUpdate.ReadOnly = true;
+            this.lastUpdate.Width = 150;
             // 
             // label1
             // 
@@ -142,7 +198,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(766, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 25);
+            this.label1.Size = new System.Drawing.Size(49, 21);
             this.label1.TabIndex = 3;
             this.label1.Text = "جستجو";
             // 
@@ -152,55 +208,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.key.Location = new System.Drawing.Point(12, 3);
             this.key.Name = "key";
-            this.key.Size = new System.Drawing.Size(748, 33);
+            this.key.Size = new System.Drawing.Size(748, 28);
             this.key.TabIndex = 4;
             this.key.TextChanged += new System.EventHandler(this.key_TextChanged);
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "کد";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // code
-            // 
-            this.code.DataPropertyName = "code";
-            this.code.HeaderText = "کد پرونده";
-            this.code.Name = "code";
-            // 
-            // fullname
-            // 
-            this.fullname.DataPropertyName = "fullname";
-            this.fullname.HeaderText = "نام بیمار";
-            this.fullname.Name = "fullname";
-            this.fullname.Width = 200;
-            // 
-            // mobile
-            // 
-            this.mobile.DataPropertyName = "mobile";
-            this.mobile.HeaderText = "شماره تماس";
-            this.mobile.Name = "mobile";
-            this.mobile.Width = 150;
-            // 
-            // irCode
-            // 
-            this.irCode.DataPropertyName = "irCode";
-            this.irCode.HeaderText = "کد ملی";
-            this.irCode.Name = "irCode";
-            // 
-            // bimeCode
-            // 
-            this.bimeCode.DataPropertyName = "bimeCode";
-            this.bimeCode.HeaderText = "کد بیمه";
-            this.bimeCode.Name = "bimeCode";
-            // 
-            // lastUpdate
-            // 
-            this.lastUpdate.DataPropertyName = "lastUpdate";
-            this.lastUpdate.HeaderText = "آخرین بروز رسانی";
-            this.lastUpdate.Name = "lastUpdate";
-            this.lastUpdate.Width = 150;
             // 
             // frmGetBimarList
             // 

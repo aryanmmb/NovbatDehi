@@ -159,7 +159,7 @@ public enum MsgBoxButtonType
 {
     OK, YESNO
 }
- 
+
 public static class StringExtensions
 {
     public static Int32 ToInt(this string s)
@@ -263,5 +263,19 @@ public static class StringExtensions
         return res.ToString(Patern);
     }
 
-
+    public static object ToStringDot(this string s)
+    {
+        string returnstr = "...";
+        try
+        {
+            if (s == null || s == "")
+                return returnstr;
+            returnstr = s.ToString();
+        }
+        catch
+        {
+            //Nothing
+        }
+        return returnstr;
+    }
 }

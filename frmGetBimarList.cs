@@ -51,7 +51,7 @@ namespace NovbatDehi
                 var tmpCustomer = myCustomers.Where(x => x.code.Contains(_key) || x.mobile.Contains(_key)
                 || x.birthDate.Contains(_key) || x.birthDate.Contains(_key) || x.fullname.Contains(_key) || x.id.ToString().Contains(_key)
                 || x.bimeCode.Contains(_key) || x.lastUpdate.Contains(_key) || x.mobile2.Contains(_key) || x.mobile3.Contains(_key)
-                || x.tozihat.Contains(_key) || x.createTime.Contains(_key));
+                || x.tozihat.Contains(_key) || x.createTime.Contains(_key)).ToList();
                 DbGrideCustomer.AutoGenerateColumns = false;
                 DbGrideCustomer.DataSource = tmpCustomer;
             }

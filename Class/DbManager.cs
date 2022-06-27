@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace NovbatDehi.Class
 {
@@ -29,54 +30,77 @@ namespace NovbatDehi.Class
         {
             return _con;
         }
-        public int FindBigestNumber(string tablename)
+
+        public bool CreateBackup(string filename)
         {
-            SqlConnection localConnection = new SqlConnection(ConfigurationManager.ConnectionStrings[conestionname].ConnectionString);
             try
             {
-                if (localConnection.State == ConnectionState.Open)
-                    localConnection.Close();
-                localConnection.Open();
-                SqlCommand cmd = new SqlCommand("FindMaxId", localConnection);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("tablename", tablename);
-                SqlDataReader reader = cmd.ExecuteReader();
-                int maxid = -1;
-                if (reader.Read())
+                using (SqlConnection masterdbConn = new SqlConnection())
                 {
-                    maxid = int.Parse(reader["maxid"].ToString());
+                    masterdbConn.ConnectionString = _con.ConnectionString;
+                    masterdbConn.Open();
+                    using (SqlCommand multiuserRollbackDbcomm = new SqlCommand())
+                    {
+                        multiuserRollbackDbcomm.Connection = masterdbConn;
+                        multiuserRollbackDbcomm.CommandText = @"ALTER DATABASE " + _con.Database + " SET MULTI_USER WITH ROLLBACK IMMEDIATE";
+
+                        multiuserRollbackDbcomm.ExecuteNonQuery();
+                    }
+                    masterdbConn.Close();
                 }
-                localConnection.Close();
-                return maxid;
+                SqlConnection.ClearAllPools();
+                using (SqlConnection backupConn = new SqlConnection())
+                {
+                    backupConn.ConnectionString = _con.ConnectionString;
+                    backupConn.Open();
+                    using (SqlCommand backupcomm = new SqlCommand())
+                    {
+                        backupcomm.Connection = backupConn;
+                        backupcomm.CommandText = @"BACKUP DATABASE " + _con.Database + " TO DISK='" + filename + "'";
+                        backupcomm.ExecuteNonQuery();
+                    }
+                    backupConn.Close();
+                }
+                return true;
             }
             catch (Exception exception)
             {
-                localConnection.Close();
-                return -1;
+                return false;
             }
         }
-        public int FindBigestFactorForCustomer(int customerId)
+        public bool RestoreBackup(string filename)
         {
             try
             {
-                Open_Db();
-                SqlCommand cmd = new SqlCommand("FindMaxFactorId", _con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("customerId", customerId);
-                SqlDataReader reader = cmd.ExecuteReader();
-                int maxid = -1;
-                if (reader.Read())
+                string masterConnectionString = _con.ConnectionString;
+                using (SqlConnection restoreConn = new SqlConnection())
                 {
-                    maxid = int.Parse(reader["maxid"].ToString());
+                    restoreConn.ConnectionString = masterConnectionString;
+                    restoreConn.Open();
+                    using (SqlCommand multiuserRollbackDbcomm = new SqlCommand())
+                    {
+                        multiuserRollbackDbcomm.Connection = restoreConn;
+                        multiuserRollbackDbcomm.CommandText = @"ALTER DATABASE " + _con.Database + " SET SINGLE_USER WITH ROLLBACK IMMEDIATE";
+
+                        multiuserRollbackDbcomm.ExecuteNonQuery();
+                    }
+                    using (SqlCommand restoredbExecutioncomm = new SqlCommand())
+                    {
+                        restoredbExecutioncomm.Connection = restoreConn;
+                        restoredbExecutioncomm.CommandText = @"USE MASTER RESTORE DATABASE [" + _con.Database + "] FROM DISK='" + filename + "' WITH REPLACE;";
+                        restoredbExecutioncomm.ExecuteNonQuery();
+                    }
+                    restoreConn.Close();
                 }
-                Close_Db();
-                return maxid;
+                return true;
             }
-            catch
+            catch (Exception exception)
             {
-                return -1;
+                return false;
             }
         }
+
+
     }
     #endregion
 
