@@ -1,6 +1,6 @@
 ﻿namespace NovbatDehi
 {
-    partial class frmProfileCustomer
+    partial class FrmProfileCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -309,7 +309,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 553);
             this.Controls.Add(this.groupPanel1);
-            this.Name = "frmProfileCustomer";
+            this.Name = "FrmProfileCustomer";
             // 
             // 
             // 

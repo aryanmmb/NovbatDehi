@@ -1,6 +1,6 @@
 ﻿namespace NovbatDehi
 {
-    partial class frmAddCustomer
+    partial class FrmAddCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -496,7 +496,7 @@
             this.Controls.Add(this.groupPanel1);
             this.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(841, 496);
-            this.Name = "frmAddCustomer";
+            this.Name = "FrmAddCustomer";
             // 
             // 
             // 

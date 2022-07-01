@@ -7,14 +7,17 @@ namespace NovbatDehi.Class
     public class DbHelperSetting
     {
         private readonly DbManager _mydb = new DbManager();
+
         public bool Add(Setting setting)
         {
             try
             {
                 _mydb.Open_Db();
-                string sql = "INSERT INTO  setting (timeFrom, timeUntil, numberofNovbat, backuppath, emailBackUpSend, AutoBackup,SmsUsername,SmsPassword,SmsLine,PaternResend,PaternSend,EmailPassword,EmailUsername,AutoSendToFtp)" +
-                "VALUES(@timeFrom, @timeUntil, @numberofNovbat, @backuppath, @emailBackUpSend, @AutoBackup,@SmsUsername,@SmsPassword,@SmsLine,@PaternResend,@PaternSend,@EmailPassword,@EmailUsername,@AutoSendToFtp)";
-                SqlCommand cmd = new SqlCommand(sql, _mydb.GetConnection_Db());
+                var sql =
+                    "INSERT INTO  setting (timeFrom, timeUntil, numberofNovbat, backuppath, emailBackUpSend, AutoBackup,SmsUsername,SmsPassword,SmsLine,PaternResend,PaternSend,EmailPassword,EmailUsername,AutoSendToFtp,SmsResend)" +
+                    "VALUES(@timeFrom, @timeUntil, @numberofNovbat, @backuppath, @emailBackUpSend, @AutoBackup,@SmsUsername,@SmsPassword,@SmsLine,@PaternResend,@PaternSend,@EmailPassword,@EmailUsername,@AutoSendToFtp,@SmsResend)";
+
+                var cmd = new SqlCommand(sql, _mydb.GetConnection_Db());
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@AutoBackup", setting.AutoBackup);
                 cmd.Parameters.AddWithValue("@backuppath", setting.backuppath);
@@ -30,30 +33,31 @@ namespace NovbatDehi.Class
                 cmd.Parameters.AddWithValue("@EmailPassword", setting.EmailPassword);
                 cmd.Parameters.AddWithValue("@EmailUsername", setting.EmailUsername);
                 cmd.Parameters.AddWithValue("@AutoSendToFtp", setting.AutoSendToFtp);
+                cmd.Parameters.AddWithValue("@SmsResend", setting.SmsResend);
 
                 cmd.ExecuteNonQuery();
                 _mydb.Close_Db();
                 return true;
             }
-#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
-#pragma warning restore CS0168 // The variable 'exception' is declared but never used
             {
+                Console.Write(exception.Message);
                 return false;
             }
         }
+
         public Setting Get_Setting()
         {
             try
             {
                 Setting tmpResult = null;
                 _mydb.Open_Db();
-                SqlCommand cmd = new SqlCommand("select top(1)* from Setting  ", _mydb.GetConnection_Db());
+                var cmd = new SqlCommand("select top(1)* from Setting  ", _mydb.GetConnection_Db());
                 cmd.CommandType = CommandType.Text;
-                SqlDataReader reader = cmd.ExecuteReader();
+                var reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    tmpResult = new Setting()
+                    tmpResult = new Setting
                     {
                         AutoBackup = reader["AutoBackup"].ToString().ToBool(),
                         backuppath = reader["backuppath"].ToString(),
@@ -70,12 +74,12 @@ namespace NovbatDehi.Class
                         EmailPassword = reader["EmailPassword"].ToString(),
                         EmailUsername = reader["EmailUsername"].ToString(),
                         AutoSendToFtp = reader["AutoSendToFtp"].ToString().ToBool(),
-
+                        SmsResend = reader["SmsResend"].ToString().ToBool(),
                     };
                 }
                 else
                 {
-                    var flag = Add(new Setting()
+                    var flag = Add(new Setting
                     {
                         AutoBackup = true,
                         timeFrom = "08:00",
@@ -89,11 +93,14 @@ namespace NovbatDehi.Class
                         PaternSend = "",
                         SmsLine = "",
                         SmsPassword = "",
-                        SmsUsername = ""
+                        SmsUsername = "",
+                        SmsResend = true,
+                        AutoSendToFtp = false
                     });
                     if (flag)
                         Get_Setting();
                 }
+
                 _mydb.Close_Db();
                 return tmpResult;
             }
@@ -104,15 +111,17 @@ namespace NovbatDehi.Class
                 return null;
             }
         }
+
         public bool Update(int settingId, Setting setting)
         {
             try
             {
                 _mydb.Open_Db();
-                string sql = "UPDATE setting   SET timeFrom = @timeFrom, timeUntil = @timeUntil," +
-                " numberofNovbat = @numberofNovbat, backuppath = @backuppath, emailBackUpSend = @emailBackUpSend, AutoBackup = @AutoBackup,SmsPassword=@SmsPassword" + "" +
-                ",SmsUsername=@SmsUsername,SmsLine=@SmsLine,PaternResend=@PaternResend,PaternSend=@PaternSend,EmailPassword=@EmailPassword,EmailUsername=@EmailUsername,AutoSendToFtp=@AutoSendToFtp ";
-                SqlCommand cmd = new SqlCommand(sql, _mydb.GetConnection_Db());
+                var sql = "UPDATE setting   SET timeFrom = @timeFrom, timeUntil = @timeUntil," +
+                          " numberofNovbat = @numberofNovbat, backuppath = @backuppath, emailBackUpSend = @emailBackUpSend, AutoBackup = @AutoBackup,SmsPassword=@SmsPassword" +
+                          "" +
+                          ",SmsUsername=@SmsUsername,SmsLine=@SmsLine,PaternResend=@PaternResend,PaternSend=@PaternSend,EmailPassword=@EmailPassword,EmailUsername=@EmailUsername,AutoSendToFtp=@AutoSendToFtp,SmsResend=@SmsResend ";
+                var cmd = new SqlCommand(sql, _mydb.GetConnection_Db());
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@AutoBackup", setting.AutoBackup);
                 cmd.Parameters.AddWithValue("@backuppath", setting.backuppath);
@@ -128,6 +137,7 @@ namespace NovbatDehi.Class
                 cmd.Parameters.AddWithValue("@EmailPassword", setting.EmailPassword);
                 cmd.Parameters.AddWithValue("@EmailUsername", setting.EmailUsername);
                 cmd.Parameters.AddWithValue("@AutoSendToFtp", setting.AutoSendToFtp);
+                cmd.Parameters.AddWithValue("@SmsResend", setting.SmsResend);
 
                 cmd.ExecuteNonQuery();
                 _mydb.Close_Db();

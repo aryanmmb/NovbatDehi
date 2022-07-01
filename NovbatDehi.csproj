@@ -57,6 +57,9 @@
     <Reference Include="MoreLinq">
       <HintPath>..\Component\MoreLinq.dll</HintPath>
     </Reference>
+    <Reference Include="PostSharp">
+      <HintPath>C:\ProgramData\PostSharp\6.10.6\bin.Release\net472\PostSharp.dll</HintPath>
+    </Reference>
     <Reference Include="Rebex.Common, Version=6.0.8181.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Component\Rebex.Common.dll</HintPath>
@@ -147,10 +150,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\CustomerDbHelper.cs" />
     <Compile Include="Class\DbHelperSetting.cs" />
     <Compile Include="Class\DbHelperReservations.cs" />
-    <Compile Include="Class\DbHelperBank.cs" />
+    <Compile Include="Class\DbHelperCustomers.cs" />
     <Compile Include="Class\DbManager.cs" />
     <Compile Include="Class\General.cs" />
     <Compile Include="Class\IniFile.cs" />
@@ -229,12 +231,6 @@
     <Compile Include="frmGetReserverReport.Designer.cs">
       <DependentUpon>frmGetReserverReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="tmp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="tmp.Designer.cs">
-      <DependentUpon>tmp.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="frmAddCustomer.resx">
       <DependentUpon>frmAddCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -280,9 +276,6 @@
     </Compile>
     <EmbeddedResource Include="frmGetReserverReport.resx">
       <DependentUpon>frmGetReserverReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="tmp.resx">
-      <DependentUpon>tmp.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="Connected Services\SmsServiceFaraz\NovbatDehi.SmsServiceFaraz.GetCreditResponse.datasource">

@@ -1,6 +1,6 @@
 ﻿namespace NovbatDehi
 {
-    partial class frmSetting
+    partial class FrmSetting
     {
         /// <summary>
         /// Required designer variable.
@@ -30,6 +30,7 @@
         {
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.AutoSendToFtp = new System.Windows.Forms.CheckBox();
             this.EmailAddress = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -58,7 +59,7 @@
             this.timeFrom = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.LblCount = new System.Windows.Forms.Label();
-            this.AutoSendToFtp = new System.Windows.Forms.CheckBox();
+            this.SmsResend = new System.Windows.Forms.CheckBox();
             this.groupPanel1.SuspendLayout();
             this.groupPanel3.SuspendLayout();
             this.groupPanel2.SuspendLayout();
@@ -168,6 +169,17 @@
             this.groupPanel3.TabIndex = 31;
             this.groupPanel3.Text = "تنظیمات FTP";
             // 
+            // AutoSendToFtp
+            // 
+            this.AutoSendToFtp.AutoSize = true;
+            this.AutoSendToFtp.Location = new System.Drawing.Point(298, 99);
+            this.AutoSendToFtp.Name = "AutoSendToFtp";
+            this.AutoSendToFtp.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.AutoSendToFtp.Size = new System.Drawing.Size(185, 23);
+            this.AutoSendToFtp.TabIndex = 36;
+            this.AutoSendToFtp.Text = "با خروج از برنامه پشتیبان ارسال شود";
+            this.AutoSendToFtp.UseVisualStyleBackColor = true;
+            // 
             // EmailAddress
             // 
             this.EmailAddress.Location = new System.Drawing.Point(10, 3);
@@ -232,6 +244,7 @@
             // 
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel2.Controls.Add(this.SmsResend);
             this.groupPanel2.Controls.Add(this.PaternResend);
             this.groupPanel2.Controls.Add(this.label9);
             this.groupPanel2.Controls.Add(this.PaternSend);
@@ -506,25 +519,25 @@
             this.LblCount.Size = new System.Drawing.Size(0, 23);
             this.LblCount.TabIndex = 6;
             // 
-            // AutoSendToFtp
+            // SmsResend
             // 
-            this.AutoSendToFtp.AutoSize = true;
-            this.AutoSendToFtp.Location = new System.Drawing.Point(298, 99);
-            this.AutoSendToFtp.Name = "AutoSendToFtp";
-            this.AutoSendToFtp.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.AutoSendToFtp.Size = new System.Drawing.Size(185, 23);
-            this.AutoSendToFtp.TabIndex = 36;
-            this.AutoSendToFtp.Text = "با خروج از برنامه پشتیبان ارسال شود";
-            this.AutoSendToFtp.UseVisualStyleBackColor = true;
+            this.SmsResend.AutoSize = true;
+            this.SmsResend.Location = new System.Drawing.Point(308, 79);
+            this.SmsResend.Name = "SmsResend";
+            this.SmsResend.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.SmsResend.Size = new System.Drawing.Size(212, 23);
+            this.SmsResend.TabIndex = 34;
+            this.SmsResend.Text = "ارسال پیامک یاد آوری(یک روز قبل از موعد)";
+            this.SmsResend.UseVisualStyleBackColor = true;
             // 
-            // frmSetting
+            // FrmSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 510);
             this.Controls.Add(this.groupPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "frmSetting";
+            this.Name = "FrmSetting";
             // 
             // 
             // 
@@ -577,5 +590,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox EmailPassword;
         private System.Windows.Forms.CheckBox AutoSendToFtp;
+        private System.Windows.Forms.CheckBox SmsResend;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace NovbatDehi
 {
-    partial class frmAddReserve
+    partial class FrmAddReserve
     {
         /// <summary>
         /// Required designer variable.
@@ -313,7 +313,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(385, 435);
             this.Controls.Add(this.groupPanel1);
-            this.Name = "frmAddReserve";
+            this.Name = "FrmAddReserve";
             // 
             // 
             // 

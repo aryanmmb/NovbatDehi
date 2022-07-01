@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NovbatDehi.Class
+﻿namespace NovbatDehi.Class
 {
     public class Customer
     {
@@ -36,7 +30,6 @@ namespace NovbatDehi.Class
 
     public class Reservations
     {
-
         public int _index { get; set; }
         public int id { get; set; }
         public int customer_id { get; set; }
@@ -53,6 +46,7 @@ namespace NovbatDehi.Class
         public string code { get; set; }
         public string fullname { get; set; }
         public string mobile { get; set; }
+        public bool SmsResend { get; set; }
     }
 
     public class Setting
@@ -65,7 +59,8 @@ namespace NovbatDehi.Class
         public string emailBackUpSend { get; set; }
         public bool AutoBackup { get; set; }
         public bool AutoSendToFtp { get; set; }
-        
+        public bool SmsResend { get; set; }
+
         public string SmsUsername { get; set; }
         public string SmsPassword { get; set; }
         public string SmsLine { get; set; }
@@ -73,6 +68,5 @@ namespace NovbatDehi.Class
         public string PaternResend { get; set; }
         public string EmailUsername { get; set; }
         public string EmailPassword { get; set; }
- 
     }
 }

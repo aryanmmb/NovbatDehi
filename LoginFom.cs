@@ -1,22 +1,24 @@
-﻿using System;
+﻿using NovbatDehi.Class;
+using System;
 using System.Windows.Forms;
-using BarcodeScaner_V2;
+using Telerik.WinControls.UI;
 
 namespace NovbatDehi
 {
-    public partial class LoginFom : Telerik.WinControls.UI.RadForm
+    public partial class LoginFom : RadForm
     {
         private readonly MsgBox _myMessage = new MsgBox();
-        
+
         public LoginFom()
         {
-            
             InitializeComponent();
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             try
@@ -25,17 +27,17 @@ namespace NovbatDehi
                 txtUname.Text = txtUname.Text.Trim();
                 if (txtUname.Text == "")
                 {
-                    _myMessage.SetMsg(MsgBoxType.Error, "نام کاربری را وارد کنید", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Error, "نام کاربری را وارد کنید", MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
                     txtUname.Focus();
                     return;
                 }
+
                 if (txtPass.Text == "")
                 {
-                    _myMessage.SetMsg(MsgBoxType.Error, "رمز عبور را وارد کنید", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Error, "رمز عبور را وارد کنید", MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
                     txtPass.Focus();
-                    return;
                 }
                 //admin myUser = _mydb.admins.SingleOrDefault(x => x.username.Equals(txtUname.Text.Trim()) && x.password.Equals(txtPass.Text));
                 //if (myUser != null)
@@ -51,14 +53,14 @@ namespace NovbatDehi
                 //    _myMessage.ShowDialog();
                 //}
             }
-#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
-#pragma warning restore CS0168 // The variable 'exception' is declared but never used
             {
-                _myMessage.SetMsg(MsgBoxType.Error, "خطایی رخ داده ورودی ها را چک کنید", MsgBoxButtonType.OK);
+                _myMessage.SetMsg(MsgBoxType.Error, "خطایی رخ داده ورودی ها را چک کنید", MsgBoxButtonType.Ok);
                 _myMessage.ShowDialog();
+                Console.Write(exception.Message);
             }
         }
+
         private void LoginFom_Load(object sender, EventArgs e)
         {
             //try

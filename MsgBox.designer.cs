@@ -1,4 +1,4 @@
-﻿namespace BarcodeScaner_V2
+﻿namespace NovbatDehi
 {
     partial class MsgBox
     {

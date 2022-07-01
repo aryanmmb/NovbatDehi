@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
- 
+
 namespace NovbatDehi.Class
 {
     public class DbHelperCustomers
     {
         private readonly DbManager _mydb = new DbManager();
+
         public bool Add(Customer customer)
         {
             try
             {
                 _mydb.Open_Db();
-                string sql = "INSERT INTO customers(code,fullname,mobile,mobile2,mobile3,birthDate,irCode, bimeCode, tozihat,lastUpdate,createTime)VALUES" +
-                             "(@code,@fullname,@mobile,@mobile2,@mobile3,@birthDate,@irCode,@bimeCode,@tozihat,@lastUpdate,@createTime)";
-                SqlCommand cmd = new SqlCommand(sql, _mydb.GetConnection_Db());
+                var sql =
+                    "INSERT INTO customers(code,fullname,mobile,mobile2,mobile3,birthDate,irCode, bimeCode, tozihat,lastUpdate,createTime)VALUES" +
+                    "(@code,@fullname,@mobile,@mobile2,@mobile3,@birthDate,@irCode,@bimeCode,@tozihat,@lastUpdate,@createTime)";
+                var cmd = new SqlCommand(sql, _mydb.GetConnection_Db());
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@code", customer.code);
                 cmd.Parameters.AddWithValue("@fullname", customer.fullname);
@@ -39,18 +41,18 @@ namespace NovbatDehi.Class
                 return false;
             }
         }
+
         public Customer Get_Customer_By_id(int customerId)
         {
             try
             {
                 Customer tmpResult = null;
                 _mydb.Open_Db();
-                SqlCommand cmd = new SqlCommand("select * from customers where id= " + customerId, _mydb.GetConnection_Db());
+                var cmd = new SqlCommand("select * from customers where id= " + customerId, _mydb.GetConnection_Db());
                 cmd.CommandType = CommandType.Text;
-                SqlDataReader reader = cmd.ExecuteReader();
+                var reader = cmd.ExecuteReader();
                 if (reader.Read())
-                {
-                    tmpResult = new Customer()
+                    tmpResult = new Customer
                     {
                         code = reader["code"].ToString(),
                         fullname = reader["fullname"].ToString(),
@@ -63,9 +65,8 @@ namespace NovbatDehi.Class
                         lastUpdate = reader["lastUpdate"].ToString(),
                         mobile = reader["mobile"].ToString(),
                         mobile2 = reader["mobile2"].ToString(),
-                        mobile3 = reader["mobile3"].ToString(),
+                        mobile3 = reader["mobile3"].ToString()
                     };
-                }
                 _mydb.Close_Db();
                 return tmpResult;
             }
@@ -74,20 +75,19 @@ namespace NovbatDehi.Class
                 return null;
             }
         }
+
         public int GetLastFreeCode()
         {
             try
             {
-                int maxid = -1;
+                var maxid = -1;
 
                 _mydb.Open_Db();
-                SqlCommand cmd = new SqlCommand(" SELECT ISNULL(MAX(code), 0) + 1 as maxcode FROM[customers]", _mydb.GetConnection_Db());
+                var cmd = new SqlCommand(" SELECT ISNULL(MAX(code), 0) + 1 as maxcode FROM[customers]",
+                    _mydb.GetConnection_Db());
                 cmd.CommandType = CommandType.Text;
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    maxid = int.Parse(reader["maxcode"].ToString());
-                }
+                var reader = cmd.ExecuteReader();
+                if (reader.Read()) maxid = int.Parse(reader["maxcode"].ToString());
                 _mydb.Close_Db();
                 return maxid;
             }
@@ -98,18 +98,18 @@ namespace NovbatDehi.Class
                 return -1;
             }
         }
+
         public List<Customer> Get_All_Customer()
         {
             try
             {
                 _mydb.Open_Db();
-                List<Customer> locaList = new List<Customer>();
-                SqlCommand cmd = new SqlCommand("select * from Customers order by code desc", _mydb.GetConnection_Db());
+                var locaList = new List<Customer>();
+                var cmd = new SqlCommand("select * from Customers order by code desc", _mydb.GetConnection_Db());
                 cmd.CommandType = CommandType.Text;
-                SqlDataReader reader = cmd.ExecuteReader();
+                var reader = cmd.ExecuteReader();
                 while (reader.Read())
-                {
-                    locaList.Add(new Customer()
+                    locaList.Add(new Customer
                     {
                         code = reader["code"].ToString(),
                         fullname = reader["fullname"].ToString(),
@@ -122,9 +122,8 @@ namespace NovbatDehi.Class
                         lastUpdate = reader["lastUpdate"].ToString(),
                         mobile = reader["mobile"].ToString(),
                         mobile2 = reader["mobile2"].ToString(),
-                        mobile3 = reader["mobile3"].ToString(),
+                        mobile3 = reader["mobile3"].ToString()
                     });
-                }
                 _mydb.Close_Db();
                 return locaList;
             }
@@ -133,15 +132,16 @@ namespace NovbatDehi.Class
                 return null;
             }
         }
+
         public bool CheckDuplicate(string code)
         {
             try
             {
                 _mydb.Open_Db();
-                SqlCommand cmd = new SqlCommand("select * from Customers where code=" + code, _mydb.GetConnection_Db());
+                var cmd = new SqlCommand("select * from Customers where code=" + code, _mydb.GetConnection_Db());
                 cmd.CommandType = CommandType.Text;
-                SqlDataReader reader = cmd.ExecuteReader();
-                bool result = reader.Read();
+                var reader = cmd.ExecuteReader();
+                var result = reader.Read();
                 _mydb.Close_Db();
                 return result;
             }
@@ -150,12 +150,13 @@ namespace NovbatDehi.Class
                 return true;
             }
         }
+
         public bool Delete(int customersId)
         {
             try
             {
                 _mydb.Open_Db();
-                SqlCommand cmd = new SqlCommand("delete from Customers where id=" + customersId, _mydb.GetConnection_Db());
+                var cmd = new SqlCommand("delete from Customers where id=" + customersId, _mydb.GetConnection_Db());
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
                 _mydb.Close_Db();
@@ -166,16 +167,17 @@ namespace NovbatDehi.Class
                 return false;
             }
         }
+
         public bool Update(int customerId, Customer customer)
         {
             try
             {
                 _mydb.Open_Db();
-                string sql =
+                var sql =
                     "UPDATE  customers SET code =@code,fullname=@fullname,mobile=@mobile,mobile2=@mobile2" +
                     ",mobile3=@mobile3,birthDate=@birthDate,irCode=@irCode,bimeCode=@bimeCode" +
                     ",tozihat=@tozihat,lastUpdate=@lastUpdate,createTime=@createTime where id=@id";
-                SqlCommand cmd = new SqlCommand(sql, _mydb.GetConnection_Db());
+                var cmd = new SqlCommand(sql, _mydb.GetConnection_Db());
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@code", customer.code);
                 cmd.Parameters.AddWithValue("@fullname", customer.fullname);

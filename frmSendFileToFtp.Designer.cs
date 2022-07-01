@@ -1,6 +1,6 @@
 ﻿namespace NovbatDehi
 {
-    partial class frmSendFileToFtp
+    partial class FrmSendFileToFtp
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.LBLStatus = new System.Windows.Forms.Label();
             this.pbProgress = new System.Windows.Forms.ProgressBar();
+            this.lbl_Message = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -42,6 +45,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.lbl_Message);
             this.groupPanel1.Controls.Add(this.LBLStatus);
             this.groupPanel1.Controls.Add(this.pbProgress);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
@@ -96,14 +100,31 @@
             this.pbProgress.Size = new System.Drawing.Size(363, 48);
             this.pbProgress.TabIndex = 9;
             // 
-            // frmSendFileToFtp
+            // lbl_Message
+            // 
+            this.lbl_Message.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Message.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Message.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_Message.Location = new System.Drawing.Point(3, 10);
+            this.lbl_Message.Name = "lbl_Message";
+            this.lbl_Message.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lbl_Message.Size = new System.Drawing.Size(371, 34);
+            this.lbl_Message.TabIndex = 11;
+            this.lbl_Message.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 300;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // FrmSendFileToFtp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 167);
             this.Controls.Add(this.groupPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "frmSendFileToFtp";
+            this.Name = "FrmSendFileToFtp";
             // 
             // 
             // 
@@ -123,5 +144,7 @@
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private System.Windows.Forms.ProgressBar pbProgress;
         private System.Windows.Forms.Label LBLStatus;
+        private System.Windows.Forms.Label lbl_Message;
+        private System.Windows.Forms.Timer timer1;
     }
 }

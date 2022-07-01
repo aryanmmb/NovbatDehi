@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using NovbatDehi.Class;
-using Telerik.WinControls;
+﻿using NovbatDehi.Class;
+using System;
+using Telerik.WinControls.UI;
 
 namespace NovbatDehi
 {
-    public partial class frmProfileCustomer : Telerik.WinControls.UI.RadForm
+    public partial class FrmProfileCustomer : RadForm
     {
         private Customer mycustomer;
-        public Reservations MyReservations;
-        private DbHelperCustomers myDbHelperCustomers = new DbHelperCustomers();
-        public frmProfileCustomer()
+
+        public FrmProfileCustomer()
         {
             InitializeComponent();
         }
@@ -24,7 +17,7 @@ namespace NovbatDehi
         {
             try
             {
-                frmGetBimarList frmGet = new frmGetBimarList();
+                var frmGet = new frmGetBimarList();
                 frmGet.ShowDialog(this);
                 if (frmGet.MyCustomer != null)
                 {
@@ -39,11 +32,9 @@ namespace NovbatDehi
                     txtBimar.Text = "";
                 }
             }
-#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
-#pragma warning restore CS0168 // The variable 'exception' is declared but never used
             {
-                //
+                Console.Write(exception.Message);
             }
         }
     }

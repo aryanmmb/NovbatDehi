@@ -1,24 +1,20 @@
-﻿using System;
+﻿using NovbatDehi.Class;
+using System;
 using System.IO;
 
 namespace BarcodeScaner_V2.Class
 {
-
     public static class IniWork
     {
-
-        public static string ReadData(string filename,string section, string keyname)
+        public static string ReadData(string filename, string section, string keyname)
         {
             try
             {
-                string basePath = Environment.CurrentDirectory;
-                if (!Directory.Exists(basePath))
-                {
-                    Directory.CreateDirectory(basePath);
-                }
+                var basePath = Environment.CurrentDirectory;
+                if (!Directory.Exists(basePath)) Directory.CreateDirectory(basePath);
 
-                IniFile ini = new IniFile(basePath + "\\"+ filename);
-                string keyValue = ini.IniReadValue(section, keyname);
+                var ini = new IniFile(basePath + "\\" + filename);
+                var keyValue = ini.IniReadValue(section, keyname);
                 return keyValue;
             }
             catch
@@ -26,16 +22,14 @@ namespace BarcodeScaner_V2.Class
                 return "";
             }
         }
-        public static bool WriteData(string filename, string section, string keyname,string value)
+
+        public static bool WriteData(string filename, string section, string keyname, string value)
         {
             try
             {
-                string basePath = Environment.CurrentDirectory;
-                if (!Directory.Exists(basePath))
-                {
-                    Directory.CreateDirectory(basePath);
-                }
-                IniFile ini = new IniFile(basePath + "\\"+ filename);
+                var basePath = Environment.CurrentDirectory;
+                if (!Directory.Exists(basePath)) Directory.CreateDirectory(basePath);
+                var ini = new IniFile(basePath + "\\" + filename);
                 ini.IniWriteValue(section, keyname, value);
                 return true;
             }

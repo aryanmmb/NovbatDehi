@@ -1,22 +1,25 @@
-﻿using BarcodeScaner_V2;
-using NovbatDehi.Class;
+﻿using NovbatDehi.Class;
+using Stimulsoft.Report;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Windows.Forms;
-using Stimulsoft.Report;
+using Telerik.WinControls.UI;
 
 namespace NovbatDehi
 {
-    public partial class frmAddCustomer : Telerik.WinControls.UI.RadForm
+    public partial class FrmAddCustomer : RadForm
     {
-        private DbManager _myDbManager = new DbManager();
+        private readonly DbHelperCustomers _myDbHelperCustomers = new DbHelperCustomers();
         private readonly MsgBox _myMessage = new MsgBox();
-        private DbHelperCustomers myDbHelperCustomers = new DbHelperCustomers();
+
+        private Customer _editedCustomer;
         private List<Customer> _myCustomers = new List<Customer>();
 
-        public frmAddCustomer()
+        private bool _sortAscending;
+
+        public FrmAddCustomer()
         {
             InitializeComponent();
         }
@@ -36,7 +39,7 @@ namespace NovbatDehi
                 txttozihat.Text = txttozihat.Text.Trim();
                 if (txtfullname.Text == "")
                 {
-                    _myMessage.SetMsg(MsgBoxType.Error, " نام بیمار را وارد کنید", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Error, " نام بیمار را وارد کنید", MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
                     txtfullname.Focus();
                     return;
@@ -44,7 +47,7 @@ namespace NovbatDehi
 
                 if (txtcode.Text == "")
                 {
-                    _myMessage.SetMsg(MsgBoxType.Error, "کد پرونده را وارد کنید", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Error, "کد پرونده را وارد کنید", MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
                     txtcode.Focus();
 
@@ -53,17 +56,17 @@ namespace NovbatDehi
 
                 if (!checkDuplicateCode.Checked)
                 {
-                    var checkstatus = myDbHelperCustomers.CheckDuplicate(txtcode.Text);
+                    var checkstatus = _myDbHelperCustomers.CheckDuplicate(txtcode.Text);
                     if (checkstatus)
                     {
-                        _myMessage.SetMsg(MsgBoxType.Warning, "کد پرونده تکراری است", MsgBoxButtonType.OK);
+                        _myMessage.SetMsg(MsgBoxType.Warning, "کد پرونده تکراری است", MsgBoxButtonType.Ok);
                         _myMessage.ShowDialog();
                         txtcode.Focus();
                         return;
                     }
                 }
 
-                bool flag = myDbHelperCustomers.Add(new Customer()
+                var flag = _myDbHelperCustomers.Add(new Customer
                 {
                     code = txtcode.Text,
                     fullname = txtfullname.Text,
@@ -75,29 +78,25 @@ namespace NovbatDehi
                     mobile = txtmobile.Text,
                     mobile2 = txtmobile2.Text,
                     mobile3 = txtmobile3.Text,
-                    tozihat = txttozihat.Text,
+                    tozihat = txttozihat.Text
                 });
-
 
                 if (flag)
                 {
-                    _myMessage.SetMsg(MsgBoxType.Confrim, "ثبت اطلاعات با موفقیت انجام شد", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Confrim, "ثبت اطلاعات با موفقیت انجام شد", MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
                     ClearInputTextBox();
                     RefreshAllData();
-                    return;
                 }
                 else
                 {
-                    _myMessage.SetMsg(MsgBoxType.Error, "خطا در ثبت اطلاعات ورودی ها را چک کنید ", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Error, "خطا در ثبت اطلاعات ورودی ها را چک کنید ", MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
-                    return;
                 }
-
             }
             catch (Exception exception)
             {
-                _myMessage.SetMsg(MsgBoxType.Error, "خطا در ثبت اطلاعات!" + exception.Message, MsgBoxButtonType.OK);
+                _myMessage.SetMsg(MsgBoxType.Error, "خطا در ثبت اطلاعات!" + exception.Message, MsgBoxButtonType.Ok);
                 _myMessage.ShowDialog();
             }
         }
@@ -111,14 +110,14 @@ namespace NovbatDehi
             catch (Exception exception)
             {
                 _myMessage.SetMsg(MsgBoxType.Error, "خطا در دریافت کد پرونده!" + exception.Message,
-                    MsgBoxButtonType.OK);
+                    MsgBoxButtonType.Ok);
                 _myMessage.ShowDialog();
             }
         }
 
         private void GetLastCode()
         {
-            txtcode.Text = myDbHelperCustomers.GetLastFreeCode().ToString();
+            txtcode.Text = _myDbHelperCustomers.GetLastFreeCode().ToString();
         }
 
         private void frmAddCustomer_Load(object sender, EventArgs e)
@@ -129,11 +128,9 @@ namespace NovbatDehi
                 GetLastCode();
                 RefreshAllData();
             }
-#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
-#pragma warning restore CS0168 // The variable 'exception' is declared but never used
             {
-                //
+                Console.Write(exception.Message);
             }
         }
 
@@ -154,7 +151,7 @@ namespace NovbatDehi
         {
             try
             {
-                _myCustomers = myDbHelperCustomers.Get_All_Customer();
+                _myCustomers = _myDbHelperCustomers.Get_All_Customer();
                 DbGrideCustomer.AutoGenerateColumns = false;
                 DbGrideCustomer.DataSource = _myCustomers;
                 GetLastCode();
@@ -163,39 +160,36 @@ namespace NovbatDehi
                 btnEdit.Enabled = true;
                 btnEdit.Text = "ویرایش";
             }
-            catch
+            catch (Exception exception)
             {
-                //
+                Console.Write(exception.Message);
             }
         }
 
-        private bool _sortAscending;
-
-        private void DbGrideCustomer_ColumnHeaderMouseClick(object sender,
-            System.Windows.Forms.DataGridViewCellMouseEventArgs e)
+        private void DbGrideCustomer_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             try
             {
                 if (_sortAscending)
                 {
-                    _myCustomers = _myCustomers.OrderBy(DbGrideCustomer.Columns[e.ColumnIndex].DataPropertyName).ToList();
+                    _myCustomers = _myCustomers.OrderBy(DbGrideCustomer.Columns[e.ColumnIndex].DataPropertyName)
+                        .ToList();
                     DbGrideCustomer.DataSource = _myCustomers;
                 }
                 else
                 {
-                    _myCustomers = _myCustomers.OrderBy(DbGrideCustomer.Columns[e.ColumnIndex].DataPropertyName).Reverse()
+                    _myCustomers = _myCustomers.OrderBy(DbGrideCustomer.Columns[e.ColumnIndex].DataPropertyName)
+                        .Reverse()
                         .ToList();
                     DbGrideCustomer.DataSource = _myCustomers;
                 }
 
                 _sortAscending = !_sortAscending;
-
             }
-#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
-#pragma warning restore CS0168 // The variable 'exception' is declared but never used
+
             {
-                //
+                Console.Write(exception.Message);
             }
         }
 
@@ -205,7 +199,7 @@ namespace NovbatDehi
             {
                 if (DbGrideCustomer.Rows.Count <= 0)
                 {
-                    _myMessage.SetMsg(MsgBoxType.Information, "سطری برای حذف وجود ندارد!", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Information, "سطری برای حذف وجود ندارد!", MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
                     return;
                 }
@@ -219,15 +213,15 @@ namespace NovbatDehi
                     {
                         _myMessage.SetMsg(MsgBoxType.Error,
                             " از حذف  بیمار  با نام " + tmpCustomer.fullname + " اطمینان دارید؟ ",
-                            MsgBoxButtonType.YESNO);
+                            MsgBoxButtonType.Yesno);
                         var tmpResult = _myMessage.ShowDialog();
                         if (tmpResult == DialogResult.Yes)
                         {
-                            var deleteResult = myDbHelperCustomers.Delete(tmpCustomer.id);
+                            var deleteResult = _myDbHelperCustomers.Delete(tmpCustomer.id);
                             if (deleteResult)
                             {
                                 _myMessage.SetMsg(MsgBoxType.Information, "حذف با موفقیت انجام شد",
-                                    MsgBoxButtonType.OK);
+                                    MsgBoxButtonType.Ok);
                                 _myMessage.ShowDialog();
                                 RefreshAllData();
                             }
@@ -235,20 +229,19 @@ namespace NovbatDehi
                     }
                     else
                     {
-                        _myMessage.SetMsg(MsgBoxType.Information, "بیمار انتخابی شما معتبر نیست ", MsgBoxButtonType.OK);
+                        _myMessage.SetMsg(MsgBoxType.Information, "بیمار انتخابی شما معتبر نیست ", MsgBoxButtonType.Ok);
                         _myMessage.ShowDialog();
-                        return;
                     }
                 }
             }
             catch (Exception exception)
             {
-                _myMessage.SetMsg(MsgBoxType.Information, "خطایی رخ داده:" + exception.Message, MsgBoxButtonType.OK);
+                _myMessage.SetMsg(MsgBoxType.Information, "خطایی رخ داده:" + exception.Message, MsgBoxButtonType.Ok);
                 _myMessage.ShowDialog();
+                Console.Write(exception.Message);
             }
         }
 
-        private Customer editedCustomer;
         private void btnEdit_Click(object sender, EventArgs e)
         {
             try
@@ -257,7 +250,7 @@ namespace NovbatDehi
                 {
                     if (DbGrideCustomer.Rows.Count <= 0)
                     {
-                        _myMessage.SetMsg(MsgBoxType.Information, "سطری برای ویرایش وجود ندارد!", MsgBoxButtonType.OK);
+                        _myMessage.SetMsg(MsgBoxType.Information, "سطری برای ویرایش وجود ندارد!", MsgBoxButtonType.Ok);
                         _myMessage.ShowDialog();
                         return;
                     }
@@ -266,19 +259,19 @@ namespace NovbatDehi
                     {
                         var rowindex = DbGrideCustomer.CurrentRow.Index;
                         var id = DbGrideCustomer.Rows[rowindex].Cells[0].Value.ToString();
-                        editedCustomer = _myCustomers.SingleOrDefault(x => x.id.ToString() == id);
-                        if (editedCustomer != null)
+                        _editedCustomer = _myCustomers.SingleOrDefault(x => x.id.ToString() == id);
+                        if (_editedCustomer != null)
                         {
-                            txtcode.Text = editedCustomer.code;
-                            txtfullname.Text = editedCustomer.fullname;
-                            txtbimeCode.Text = editedCustomer.bimeCode;
-                            txtbirthDate.Text = editedCustomer.birthDate;
-                            txtirCode.Text = editedCustomer.irCode;
-                            todatedate.Text = editedCustomer.lastUpdate;
-                            txtmobile.Text = editedCustomer.mobile;
-                            txtmobile2.Text = editedCustomer.mobile2;
-                            txtmobile3.Text = editedCustomer.mobile3;
-                            txttozihat.Text = editedCustomer.tozihat;
+                            txtcode.Text = _editedCustomer.code;
+                            txtfullname.Text = _editedCustomer.fullname;
+                            txtbimeCode.Text = _editedCustomer.bimeCode;
+                            txtbirthDate.Text = _editedCustomer.birthDate;
+                            txtirCode.Text = _editedCustomer.irCode;
+                            todatedate.Text = _editedCustomer.lastUpdate;
+                            txtmobile.Text = _editedCustomer.mobile;
+                            txtmobile2.Text = _editedCustomer.mobile2;
+                            txtmobile3.Text = _editedCustomer.mobile3;
+                            txttozihat.Text = _editedCustomer.tozihat;
                             btnEdit.Text = "بروزرسانی";
                             btnAdd.Enabled = false;
                             btnDelete.Enabled = false;
@@ -286,9 +279,8 @@ namespace NovbatDehi
                         else
                         {
                             _myMessage.SetMsg(MsgBoxType.Information, "بیمار انتخابی شما معتبر نیست ",
-                                MsgBoxButtonType.OK);
+                                MsgBoxButtonType.Ok);
                             _myMessage.ShowDialog();
-                            return;
                         }
                     }
                 }
@@ -305,7 +297,7 @@ namespace NovbatDehi
                     txttozihat.Text = txttozihat.Text.Trim();
                     if (txtfullname.Text == "")
                     {
-                        _myMessage.SetMsg(MsgBoxType.Error, " نام بیمار را وارد کنید", MsgBoxButtonType.OK);
+                        _myMessage.SetMsg(MsgBoxType.Error, " نام بیمار را وارد کنید", MsgBoxButtonType.Ok);
                         _myMessage.ShowDialog();
                         txtfullname.Focus();
                         return;
@@ -313,7 +305,7 @@ namespace NovbatDehi
 
                     if (txtcode.Text == "")
                     {
-                        _myMessage.SetMsg(MsgBoxType.Error, "کد پرونده را وارد کنید", MsgBoxButtonType.OK);
+                        _myMessage.SetMsg(MsgBoxType.Error, "کد پرونده را وارد کنید", MsgBoxButtonType.Ok);
                         _myMessage.ShowDialog();
                         txtcode.Focus();
 
@@ -322,64 +314,71 @@ namespace NovbatDehi
 
                     if (!checkDuplicateCode.Checked)
                     {
-                        var checkstatus = myDbHelperCustomers.CheckDuplicate(txtcode.Text);
-                        if (checkstatus && editedCustomer.code != txtcode.Text)
+                        var checkstatus = _myDbHelperCustomers.CheckDuplicate(txtcode.Text);
+                        if (checkstatus && _editedCustomer.code != txtcode.Text)
                         {
-                            _myMessage.SetMsg(MsgBoxType.Warning, "کد پرونده تکراری است", MsgBoxButtonType.OK);
+                            _myMessage.SetMsg(MsgBoxType.Warning, "کد پرونده تکراری است", MsgBoxButtonType.Ok);
                             _myMessage.ShowDialog();
                             txtcode.Focus();
                             return;
                         }
                     }
-                    editedCustomer.code = txtcode.Text;
-                    editedCustomer.fullname = txtfullname.Text;
-                    editedCustomer.bimeCode = txtbimeCode.Text;
-                    editedCustomer.birthDate = txtbirthDate.Text;
-                    editedCustomer.irCode = txtirCode.Text;
-                    editedCustomer.lastUpdate = todatedate.Text;
-                    editedCustomer.mobile = txtmobile.Text;
-                    editedCustomer.mobile2 = txtmobile2.Text;
-                    editedCustomer.mobile3 = txtmobile3.Text;
-                    editedCustomer.tozihat = txttozihat.Text;
-                    bool flag = myDbHelperCustomers.Update(editedCustomer.id, editedCustomer);
+
+                    _editedCustomer.code = txtcode.Text;
+                    _editedCustomer.fullname = txtfullname.Text;
+                    _editedCustomer.bimeCode = txtbimeCode.Text;
+                    _editedCustomer.birthDate = txtbirthDate.Text;
+                    _editedCustomer.irCode = txtirCode.Text;
+                    _editedCustomer.lastUpdate = todatedate.Text;
+                    _editedCustomer.mobile = txtmobile.Text;
+                    _editedCustomer.mobile2 = txtmobile2.Text;
+                    _editedCustomer.mobile3 = txtmobile3.Text;
+                    _editedCustomer.tozihat = txttozihat.Text;
+                    var flag = _myDbHelperCustomers.Update(_editedCustomer.id, _editedCustomer);
                     if (flag)
                     {
-                        _myMessage.SetMsg(MsgBoxType.Confrim, "ویرایش اطلاعات با موفقیت انجام شد", MsgBoxButtonType.OK);
+                        _myMessage.SetMsg(MsgBoxType.Confrim, "ویرایش اطلاعات با موفقیت انجام شد", MsgBoxButtonType.Ok);
                         _myMessage.ShowDialog();
                         ClearInputTextBox();
                         RefreshAllData();
-                        return;
                     }
                     else
                     {
-                        _myMessage.SetMsg(MsgBoxType.Error, "خطا در ویرایش اطلاعات ورودی ها را چک کنید ", MsgBoxButtonType.OK);
+                        _myMessage.SetMsg(MsgBoxType.Error, "خطا در ویرایش اطلاعات ورودی ها را چک کنید ",
+                            MsgBoxButtonType.Ok);
                         _myMessage.ShowDialog();
-                        return;
                     }
                 }
             }
-            catch
+            catch (Exception exception)
             {
-
+                Console.Write(exception.Message);
             }
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            if (_myCustomers.Count <= 0)
+            try
             {
-                _myMessage.SetMsg(MsgBoxType.Information, "سطری برای چاپ وجود ندارد!", MsgBoxButtonType.OK);
-                _myMessage.ShowDialog();
-                return;
+                if (_myCustomers.Count <= 0)
+                {
+                    _myMessage.SetMsg(MsgBoxType.Information, "سطری برای چاپ وجود ندارد!", MsgBoxButtonType.Ok);
+                    _myMessage.ShowDialog();
+                    return;
+                }
+
+                var basePath = Environment.CurrentDirectory;
+                var myReport = new StiReport();
+                var ReportType = "\\Report\\Report.mrt";
+                myReport.Load(basePath + ReportType);
+                myReport.RegBusinessObject("Customer", _myCustomers);
+                myReport.Render();
+                myReport.Show();
             }
-            var basePath = Environment.CurrentDirectory;
-            var myReport = new StiReport();
-            var ReportType = "\\Report\\Report.mrt";
-            myReport.Load(basePath + ReportType);
-            myReport.RegBusinessObject("Customer", _myCustomers);
-            myReport.Render();
-            myReport.Show();
-            return;
+            catch (Exception exception)
+            {
+                Console.Write(exception.Message);
+            }
         }
     }
 }

@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using NovbatDehi.Class;
+using System;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
-using BarcodeScaner_V2;
-using NovbatDehi.Class;
-using Telerik.WinControls;
+using Telerik.WinControls.UI;
 
 namespace NovbatDehi
 {
-    public partial class frmBackupAndReplease : Telerik.WinControls.UI.RadForm
+    public partial class frmBackupAndReplease : RadForm
     {
         private readonly MsgBox _myMessage = new MsgBox();
 
-        private DbManager _myDbManager = new DbManager();
+        private readonly DbManager _myDbManager = new DbManager();
+
         public frmBackupAndReplease()
         {
             InitializeComponent();
@@ -26,18 +21,17 @@ namespace NovbatDehi
         {
             saveFileDialog1.FileName = "Database_Novbat_" + DateTime.Now.ToString("yyyyMMdd") + ".back";
             saveFileDialog1.ShowDialog(this);
-            if (saveFileDialog1.FileName != ""  )
+            if (saveFileDialog1.FileName != "")
             {
-                bool flag = _myDbManager.CreateBackup(saveFileDialog1.FileName);
+                var flag = _myDbManager.CreateBackup(saveFileDialog1.FileName);
                 if (flag)
                 {
-                    _myMessage.SetMsg(MsgBoxType.Information, "پشتیبان گیری با موفقیت انجام شد", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Information, "پشتیبان گیری با موفقیت انجام شد", MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
-
                 }
                 else
                 {
-                    _myMessage.SetMsg(MsgBoxType.Information, "خطایی رخ داده ورودی ها را چک کنید", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Information, "خطایی رخ داده ورودی ها را چک کنید", MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
                 }
             }
@@ -48,19 +42,20 @@ namespace NovbatDehi
             openFileDialog1.ShowDialog(this);
             if (openFileDialog1.FileName != "" && File.Exists(openFileDialog1.FileName))
             {
-                bool flag = _myDbManager.RestoreBackup(openFileDialog1.FileName);
+                var flag = _myDbManager.RestoreBackup(openFileDialog1.FileName);
                 if (flag)
                 {
-                    _myMessage.SetMsg(MsgBoxType.Information, "بازیابی پشتیبان با موفقیت انجام شد", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Information, "بازیابی پشتیبان با موفقیت انجام شد",
+                        MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
 
-                    _myMessage.SetMsg(MsgBoxType.Information, "برنامه را دوباره باز کنید", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Information, "برنامه را دوباره باز کنید", MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
                     Application.Exit();
                 }
                 else
                 {
-                    _myMessage.SetMsg(MsgBoxType.Information, "خطایی رخ داده ورودی ها را چک کنید", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Information, "خطایی رخ داده ورودی ها را چک کنید", MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
                 }
             }

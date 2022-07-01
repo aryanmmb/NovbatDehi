@@ -1,57 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using Rebex.Net;
+using System;
 using System.IO;
-using System.Text;
+using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Rebex.IO;
-using Rebex.Net;
-using Telerik.WinControls;
+using Telerik.WinControls.UI;
 
 namespace NovbatDehi
 {
-    public enum BackgroundOperation
+    public partial class FrmSendFileToFtp : RadForm
     {
-        ConnectFinished,
-        LoginFinished,
-        GetFileFinished,
-        DisconnectFinished,
-    }
-    public partial class frmSendFileToFtp : Telerik.WinControls.UI.RadForm
-    {
+        private Thread _backgroundThread;
+        private Ftp _ftp;
+        private long _remoteOffset;
+        private string _remotePath;
         public string BackupFile;
-        public frmSendFileToFtp()
+        public bool CanExit;
+
+        public FrmSendFileToFtp()
         {
             InitializeComponent();
         }
-        private Thread _backgroundThread;
-        private Ftp _ftp;
+
         private void StartBackgroundThread(ThreadStart threadStart)
         {
-            if (_backgroundThread != null)
+            try
             {
-                LBLStatus.Text = ("خطا در ارسال فایل");
-                return;
+                timer1.Enabled = true;
+                lbl_Message.Text = "لطفا صبر کنید ";
+
+                if (_backgroundThread != null)
+                {
+                    LBLStatus.Text = "خطا در ارسال فایل";
+                    timer1.Enabled = false;
+                    lbl_Message.Text = "ارسال انجام نشد";
+                    return;
+                }
+                _ftp = new Ftp();
+                _ftp.StateChanged += StateChangedProxy;
+                _ftp.TransferProgressChanged += TransferProgressProxy;
+                _backgroundThread = new Thread(threadStart);
+                _backgroundThread.Start();
             }
-            _ftp = new Ftp();
-            _ftp.StateChanged += StateChangedProxy;
-            _ftp.TransferProgressChanged += TransferProgressProxy;
-            _backgroundThread = new Thread(threadStart);
-            _backgroundThread.Start();
+            catch (System.Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
         }
+
         private void StateChangedProxy(object sender, FtpStateChangedEventArgs e)
         {
-            SafeInvoke(new EventHandler<FtpStateChangedEventArgs>(StateChanged), new object[] { sender, e });
+            SafeInvoke(new EventHandler<FtpStateChangedEventArgs>(StateChanged), sender, e);
         }
 
         public void TransferProgressProxy(object sender, FtpTransferProgressChangedEventArgs e)
         {
-            SafeInvoke(new EventHandler<FtpTransferProgressChangedEventArgs>(TransferProgress), new object[] { sender, e });
+            SafeInvoke(new EventHandler<FtpTransferProgressChangedEventArgs>(TransferProgress), sender, e);
         }
+
         private void SafeInvoke(Delegate method, params object[] args)
         {
             try
@@ -63,6 +69,7 @@ namespace NovbatDehi
             {
             }
         }
+
         private void StateChanged(object sender, FtpStateChangedEventArgs e)
         {
             LBLStatus.Text = e.NewState.ToString();
@@ -74,8 +81,6 @@ namespace NovbatDehi
             pbProgress.Value = Convert.ToInt32(e.CurrentFileProgressPercentage);
             LBLStatus.Text = "در حال انتقال.. " + e.CurrentFileBytesTransferred + " بایت ";
         }
-        private long _remoteOffset;
-        private string remotePath;
 
         private void BackgroundUpload()
         {
@@ -83,34 +88,23 @@ namespace NovbatDehi
             try
             {
                 local = File.OpenRead(BackupFile);
-
-                SslMode secureMode = SslMode.None;
+                var secureMode = SslMode.None;
                 _ftp.Settings.SslAcceptAllCertificates = true;
                 secureMode = SslMode.Explicit;
-
-                // Connect to the server.
-                _ftp.Connect(frmMain.MySetting.emailBackUpSend, 21, secureMode);
-                // Log in.
-                _ftp.Login(frmMain.MySetting.EmailUsername, frmMain.MySetting.EmailPassword);
-
-                // Get the length of the remote file. This is needed to be able to resume the transfer.
-
+                _ftp.Connect(FrmMain.MySetting.emailBackUpSend, 21, secureMode);
+                _ftp.Login(FrmMain.MySetting.EmailUsername, FrmMain.MySetting.EmailPassword);
                 _remoteOffset = 0;
-                remotePath = Path.GetFileName(BackupFile);
-
-
-
+                _remotePath = Path.GetFileName(BackupFile);
                 if (_remoteOffset < local.Length)
                 {
                     SetAbortState(true);
                     local.Seek(_remoteOffset, SeekOrigin.Begin);
-                    _ftp.PutFile(local, "/backup/" + remotePath, _remoteOffset, -1);
+                    _ftp.PutFile(local, "/backup/" + _remotePath, _remoteOffset, -1);
                 }
-
             }
             catch (FtpException ex)
             {
-                LBLStatus.Text = ("خطا");
+                LBLStatus.Text = "خطا" + ex.Message;
             }
             finally
             {
@@ -121,32 +115,53 @@ namespace NovbatDehi
                 _backgroundThread = null;
                 SafeInvoke(new OperationDoneDelegate(OperationDone));
             }
-
         }
-        private delegate void OperationDoneDelegate();
 
         private void OperationDone()
         {
-            // Reset the progress bar
-            pbProgress.Value = 0;
-
-            SetAbortState(false);
-            LBLStatus.Text = ("ارسال تمام شد");
-            frmMain.FileSendedToFtp = true;
-            Application.Exit();
-
-        }
-        private void SetAbortState(bool enabled)
-        {
-            if (this.InvokeRequired)
+            try
             {
-                this.Invoke(new Action<bool>(SetAbortState), enabled);
-                return;
+                pbProgress.Value = 0;
+                SetAbortState(false);
+                lbl_Message.Text = "ارسال تمام شد";
+                timer1.Enabled = false;
+                LBLStatus.Text = "اتمام عملیات";
+                FrmMain.FileSendedToFtp = true;
+                if (CanExit)
+                    Application.Exit();
+            }
+            catch (System.Exception ex)
+            {
+                Console.Write(ex.Message);
             }
         }
+
+        private void SetAbortState(bool enabled)
+        {
+            if (InvokeRequired) Invoke(new Action<bool>(SetAbortState), enabled);
+        }
+
         private void frmSendFileToFtp_Load(object sender, EventArgs e)
         {
             StartBackgroundThread(BackgroundUpload);
+        }
+
+        private delegate void OperationDoneDelegate();
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                lbl_Message.Text += ".";
+                char ch = '.';
+                int freq = lbl_Message.Text.Count(x => (x == ch));
+                if (freq > 5)
+                    lbl_Message.Text = "لطفا صبر کنید ";
+            }
+            catch (System.Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
         }
     }
 }

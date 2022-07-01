@@ -1,19 +1,22 @@
-﻿using System;
+﻿using NovbatDehi.Class;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Dynamic;
 using System.Windows.Forms;
-using BarcodeScaner_V2;
-using NovbatDehi.Class;
-using System.Linq;
+using Telerik.WinControls.UI;
+
 namespace NovbatDehi
 {
-    public partial class frmGetBimarList : Telerik.WinControls.UI.RadForm
+    public partial class frmGetBimarList : RadForm
     {
-        private DbManager _myDbManager = new DbManager();
         private readonly MsgBox _myMessage = new MsgBox();
-        private DbHelperCustomers myDbHelperCustomers = new DbHelperCustomers();
         private List<Customer> _myCustomers = new List<Customer>();
+        private DbManager _myDbManager = new DbManager();
+        private bool _sortAscending;
         public Customer MyCustomer;
+        private readonly DbHelperCustomers myDbHelperCustomers = new DbHelperCustomers();
+
         public frmGetBimarList()
         {
             InitializeComponent();
@@ -23,6 +26,7 @@ namespace NovbatDehi
         {
             RefreshAllData();
         }
+
         private void RefreshAllData()
         {
             try
@@ -30,7 +34,6 @@ namespace NovbatDehi
                 _myCustomers = myDbHelperCustomers.Get_All_Customer().ToList();
                 DbGrideCustomer.AutoGenerateColumns = false;
                 DbGrideCustomer.DataSource = _myCustomers;
-
             }
             catch
             {
@@ -42,11 +45,13 @@ namespace NovbatDehi
         {
             try
             {
-                string _key = key.Text.Trim();
+                var _key = key.Text.Trim();
                 var tmpCustomer = _myCustomers.Where(x => x.code.Contains(_key) || x.mobile.Contains(_key)
-                || x.birthDate.Contains(_key) || x.birthDate.Contains(_key) || x.fullname.Contains(_key) || x.id.ToString().Contains(_key)
-                || x.bimeCode.Contains(_key) || x.lastUpdate.Contains(_key) || x.mobile2.Contains(_key) || x.mobile3.Contains(_key)
-                || x.tozihat.Contains(_key) || x.createTime.Contains(_key)).ToList();
+                    || x.birthDate.Contains(_key) || x.birthDate.Contains(_key) || x.fullname.Contains(_key) ||
+                    x.id.ToString().Contains(_key)
+                    || x.bimeCode.Contains(_key) || x.lastUpdate.Contains(_key) || x.mobile2.Contains(_key) ||
+                    x.mobile3.Contains(_key)
+                    || x.tozihat.Contains(_key) || x.createTime.Contains(_key)).ToList();
                 DbGrideCustomer.AutoGenerateColumns = false;
                 DbGrideCustomer.DataSource = tmpCustomer;
             }
@@ -62,10 +67,11 @@ namespace NovbatDehi
             {
                 if (DbGrideCustomer.Rows.Count <= 0)
                 {
-                    _myMessage.SetMsg(MsgBoxType.Information, "سطری برای انتخاب وجود ندارد!", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Information, "سطری برای انتخاب وجود ندارد!", MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
                     return;
                 }
+
                 if (DbGrideCustomer.CurrentRow != null)
                 {
                     var rowindex = DbGrideCustomer.CurrentRow.Index;
@@ -77,15 +83,14 @@ namespace NovbatDehi
                     }
                     else
                     {
-                        _myMessage.SetMsg(MsgBoxType.Information, "بیمار انتخابی شما معتبر نیست ", MsgBoxButtonType.OK);
+                        _myMessage.SetMsg(MsgBoxType.Information, "بیمار انتخابی شما معتبر نیست ", MsgBoxButtonType.Ok);
                         _myMessage.ShowDialog();
-                        return;
                     }
                 }
             }
             catch (Exception exception)
             {
-                _myMessage.SetMsg(MsgBoxType.Information, "خطایی رخ داده:" + exception.Message, MsgBoxButtonType.OK);
+                _myMessage.SetMsg(MsgBoxType.Information, "خطایی رخ داده:" + exception.Message, MsgBoxButtonType.Ok);
                 _myMessage.ShowDialog();
             }
         }
@@ -94,24 +99,26 @@ namespace NovbatDehi
         {
             buttonX1_Click(null, null);
         }
-        private bool _sortAscending;
+
         private void DbGrideCustomer_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             try
             {
                 if (_sortAscending)
                 {
-                    _myCustomers = _myCustomers.OrderBy(DbGrideCustomer.Columns[e.ColumnIndex].DataPropertyName).ToList();
+                    _myCustomers = _myCustomers.OrderBy(DbGrideCustomer.Columns[e.ColumnIndex].DataPropertyName)
+                        .ToList();
                     DbGrideCustomer.DataSource = _myCustomers;
                 }
                 else
                 {
-                    _myCustomers = _myCustomers.OrderBy(DbGrideCustomer.Columns[e.ColumnIndex].DataPropertyName).Reverse()
+                    _myCustomers = _myCustomers.OrderBy(DbGrideCustomer.Columns[e.ColumnIndex].DataPropertyName)
+                        .Reverse()
                         .ToList();
                     DbGrideCustomer.DataSource = _myCustomers;
                 }
-                _sortAscending = !_sortAscending;
 
+                _sortAscending = !_sortAscending;
             }
 #pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)

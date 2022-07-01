@@ -1,17 +1,17 @@
-﻿using System;
+﻿using NovbatDehi.Class;
+using System;
 using System.Windows.Forms;
-using BarcodeScaner_V2;
-using NovbatDehi.Class;
+using Telerik.WinControls.UI;
 
 namespace NovbatDehi
 {
-    public partial class frmSetting : Telerik.WinControls.UI.RadForm
+    public partial class FrmSetting : RadForm
     {
-        private Setting _mySetting;
+        private readonly DbHelperSetting _myDbHelperSetting = new DbHelperSetting();
         private readonly MsgBox _myMessage = new MsgBox();
-        DbHelperSetting _myDbHelperSetting = new DbHelperSetting();
+        private Setting _mySetting;
 
-        public frmSetting()
+        public FrmSetting()
         {
             InitializeComponent();
         }
@@ -45,6 +45,7 @@ namespace NovbatDehi
                 PaternSend.Text = _mySetting.PaternSend;
                 EmailPassword.Text = _mySetting.EmailPassword;
                 EmailUsername.Text = _mySetting.EmailUsername;
+                SmsResend.Checked = _mySetting.SmsResend;
             }
         }
 
@@ -54,11 +55,12 @@ namespace NovbatDehi
             {
                 if (numberofNovbat.Text.ToInt() <= 0)
                 {
-                    _myMessage.SetMsg(MsgBoxType.Information, "تعداد نوبت نباید صفر یا کمتر باشد", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Information, "تعداد نوبت نباید صفر یا کمتر باشد", MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
                     numberofNovbat.Focus();
                     return;
                 }
+
                 _mySetting.timeFrom = timeFrom.Text;
                 _mySetting.timeUntil = timeUntil.Text;
                 _mySetting.numberofNovbat = numberofNovbat.Text.ToInt();
@@ -73,23 +75,23 @@ namespace NovbatDehi
                 _mySetting.EmailPassword = EmailPassword.Text;
                 _mySetting.EmailUsername = EmailUsername.Text;
                 _mySetting.AutoSendToFtp = AutoSendToFtp.Checked;
+                _mySetting.SmsResend = SmsResend.Checked;
 
-                bool flag = _myDbHelperSetting.Update(_mySetting.id, _mySetting);
+                var flag = _myDbHelperSetting.Update(_mySetting.id, _mySetting);
                 if (flag)
                 {
-                    _myMessage.SetMsg(MsgBoxType.Information, "بروز رسانی با موفقیت انجام شد", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Information, "بروز رسانی با موفقیت انجام شد", MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
                 }
                 else
                 {
-                    _myMessage.SetMsg(MsgBoxType.Error, "خطایی رخ داده ورودی ها را چک کنید", MsgBoxButtonType.OK);
+                    _myMessage.SetMsg(MsgBoxType.Error, "خطایی رخ داده ورودی ها را چک کنید", MsgBoxButtonType.Ok);
                     _myMessage.ShowDialog();
                 }
-
             }
             catch (Exception exception)
             {
-                _myMessage.SetMsg(MsgBoxType.Error, "خطا:" + exception.Message, MsgBoxButtonType.OK);
+                _myMessage.SetMsg(MsgBoxType.Error, "خطا:" + exception.Message, MsgBoxButtonType.Ok);
                 _myMessage.ShowDialog();
             }
         }
@@ -100,20 +102,12 @@ namespace NovbatDehi
             {
                 var folder = new FolderBrowserDialog();
                 folder.ShowDialog(this);
-                if (folder.SelectedPath != "")
-                {
-                    backupPath.Text = folder.SelectedPath;
-                }
-
+                if (folder.SelectedPath != "") backupPath.Text = folder.SelectedPath;
             }
-#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
-#pragma warning restore CS0168 // The variable 'exception' is declared but never used
             {
-                //
+                Console.Write(exception.Message);
             }
-
-
         }
     }
 }
