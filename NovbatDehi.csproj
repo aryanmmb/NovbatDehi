@@ -57,33 +57,65 @@
     <Reference Include="MoreLinq">
       <HintPath>..\Component\MoreLinq.dll</HintPath>
     </Reference>
+    <Reference Include="Rebex.Common, Version=6.0.8181.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Component\Rebex.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Ftp, Version=6.0.8181.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Component\Rebex.Ftp.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Networking, Version=6.0.8181.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Component\Rebex.Networking.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp, Version=108.0.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Component\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="Stimulsoft.Base, Version=2017.2.2.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Zaban_Managmenet\Zaban_Managmenet\bin\Release\Stimulsoft.Base.dll</HintPath>
+      <HintPath>..\Component\Stimulsoft.Base.dll</HintPath>
     </Reference>
     <Reference Include="Stimulsoft.Controls, Version=2017.2.2.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Zaban_Managmenet\Zaban_Managmenet\bin\Release\Stimulsoft.Controls.dll</HintPath>
+      <HintPath>..\Component\Stimulsoft.Controls.dll</HintPath>
     </Reference>
     <Reference Include="Stimulsoft.Controls.Win, Version=2017.2.2.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Zaban_Managmenet\Zaban_Managmenet\bin\Release\Stimulsoft.Controls.Win.dll</HintPath>
+      <HintPath>..\Component\Stimulsoft.Controls.Win.dll</HintPath>
     </Reference>
     <Reference Include="Stimulsoft.Database, Version=2017.2.2.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Zaban_Managmenet\Zaban_Managmenet\bin\Release\Stimulsoft.Database.dll</HintPath>
+      <HintPath>..\Component\Stimulsoft.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Editor, Version=2017.2.2.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Component\Stimulsoft.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report, Version=2017.2.2.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Component\Stimulsoft.Report.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Check, Version=2017.2.2.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Component\Stimulsoft.Report.Check.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Design, Version=2017.2.2.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Component\Stimulsoft.Report.Design.dll</HintPath>
     </Reference>
     <Reference Include="Stimulsoft.Report.Helper, Version=2017.2.2.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Zaban_Managmenet\Zaban_Managmenet\bin\Release\Stimulsoft.Report.Helper.dll</HintPath>
+      <HintPath>..\Component\Stimulsoft.Report.Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Web, Version=2017.2.2.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Component\Stimulsoft.Report.Web.dll</HintPath>
     </Reference>
     <Reference Include="Stimulsoft.Report.Win, Version=2017.2.2.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Zaban_Managmenet\Zaban_Managmenet\bin\Release\Stimulsoft.Report.Win.dll</HintPath>
+      <HintPath>..\Component\Stimulsoft.Report.Win.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -167,6 +199,12 @@
     <Compile Include="frmProfileCustomer.Designer.cs">
       <DependentUpon>frmProfileCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSendFileToFtp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSendFileToFtp.Designer.cs">
+      <DependentUpon>frmSendFileToFtp.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +222,12 @@
     </Compile>
     <Compile Include="MsgBox.designer.cs">
       <DependentUpon>MsgBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGetReserverReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGetReserverReport.Designer.cs">
+      <DependentUpon>frmGetReserverReport.cs</DependentUpon>
     </Compile>
     <Compile Include="tmp.cs">
       <SubType>Form</SubType>
@@ -211,6 +255,9 @@
     <EmbeddedResource Include="frmProfileCustomer.resx">
       <DependentUpon>frmProfileCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSendFileToFtp.resx">
+      <DependentUpon>frmSendFileToFtp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSetting.resx">
       <DependentUpon>frmSetting.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,6 +278,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="frmGetReserverReport.resx">
+      <DependentUpon>frmGetReserverReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="tmp.resx">
       <DependentUpon>tmp.cs</DependentUpon>
     </EmbeddedResource>

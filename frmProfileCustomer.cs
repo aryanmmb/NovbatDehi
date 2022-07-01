@@ -39,7 +39,9 @@ namespace NovbatDehi
                     txtBimar.Text = "";
                 }
             }
+#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
+#pragma warning restore CS0168 // The variable 'exception' is declared but never used
             {
                 //
             }

@@ -47,7 +47,9 @@ public static class General
                 //Logger.AddLog(" DeleteFile Filename:" + fileFullName + "   Time:" + DateTime.Now, LogType.Success);
             }
         }
+#pragma warning disable CS0168 // The variable 'exception' is declared but never used
         catch (Exception exception)
+#pragma warning restore CS0168 // The variable 'exception' is declared but never used
         {
             //Logger.AddLog("Error DeleteFile Filename:" + fileFullName + " exception:" + exception.Message + "   Time:" + DateTime.Now, LogType.Error);
         }

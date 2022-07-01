@@ -64,7 +64,9 @@ namespace NovbatDehi.Class
                 }
                 return true;
             }
+#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
+#pragma warning restore CS0168 // The variable 'exception' is declared but never used
             {
                 return false;
             }
@@ -95,7 +97,9 @@ namespace NovbatDehi.Class
                 }
                 return true;
             }
+#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
+#pragma warning restore CS0168 // The variable 'exception' is declared but never used
             {
                 return false;
             }
@@ -119,7 +123,9 @@ namespace NovbatDehi.Class
                 }
                 return "OK";
             }
+#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
+#pragma warning restore CS0168 // The variable 'exception' is declared but never used
             {
                 return "NO";
             }
@@ -143,7 +149,9 @@ namespace NovbatDehi.Class
                 }
                 return "OK";
             }
+#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
+#pragma warning restore CS0168 // The variable 'exception' is declared but never used
             {
                 return "NO";
             }

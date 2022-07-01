@@ -64,12 +64,15 @@ namespace NovbatDehi.Class
         public string backuppath { get; set; }
         public string emailBackUpSend { get; set; }
         public bool AutoBackup { get; set; }
+        public bool AutoSendToFtp { get; set; }
+        
         public string SmsUsername { get; set; }
         public string SmsPassword { get; set; }
         public string SmsLine { get; set; }
         public string PaternSend { get; set; }
         public string PaternResend { get; set; }
-
-
+        public string EmailUsername { get; set; }
+        public string EmailPassword { get; set; }
+ 
     }
 }

@@ -16,7 +16,7 @@ namespace NovbatDehi
     {
         private readonly MsgBox _myMessage = new MsgBox();
 
-        private DbManager myDbManager = new DbManager();
+        private DbManager _myDbManager = new DbManager();
         public frmBackupAndReplease()
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace NovbatDehi
             saveFileDialog1.ShowDialog(this);
             if (saveFileDialog1.FileName != ""  )
             {
-                bool flag = myDbManager.CreateBackup(saveFileDialog1.FileName);
+                bool flag = _myDbManager.CreateBackup(saveFileDialog1.FileName);
                 if (flag)
                 {
                     _myMessage.SetMsg(MsgBoxType.Information, "پشتیبان گیری با موفقیت انجام شد", MsgBoxButtonType.OK);
@@ -48,7 +48,7 @@ namespace NovbatDehi
             openFileDialog1.ShowDialog(this);
             if (openFileDialog1.FileName != "" && File.Exists(openFileDialog1.FileName))
             {
-                bool flag = myDbManager.RestoreBackup(openFileDialog1.FileName);
+                bool flag = _myDbManager.RestoreBackup(openFileDialog1.FileName);
                 if (flag)
                 {
                     _myMessage.SetMsg(MsgBoxType.Information, "بازیابی پشتیبان با موفقیت انجام شد", MsgBoxButtonType.OK);

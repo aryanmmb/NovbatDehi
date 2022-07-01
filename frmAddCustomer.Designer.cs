@@ -153,7 +153,7 @@
             // 
             this.todatedate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.todatedate.Font = new System.Drawing.Font("B Mitra", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.todatedate.Location = new System.Drawing.Point(342, 516);
+            this.todatedate.Location = new System.Drawing.Point(365, 515);
             this.todatedate.Miladi = new System.DateTime(((long)(0)));
             this.todatedate.Name = "todatedate";
             this.todatedate.NowDateSelected = false;
@@ -200,6 +200,7 @@
             this.btnPrint.SymbolSize = 15F;
             this.btnPrint.TabIndex = 13;
             this.btnPrint.Text = "چاپ لیست";
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnEdit
             // 
@@ -210,13 +211,14 @@
             this.btnEdit.Font = new System.Drawing.Font("IRANSans", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.Location = new System.Drawing.Point(226, 507);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(104, 39);
+            this.btnEdit.Size = new System.Drawing.Size(133, 39);
             this.btnEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnEdit.Symbol = "";
             this.btnEdit.SymbolColor = System.Drawing.Color.RoyalBlue;
             this.btnEdit.SymbolSize = 15F;
             this.btnEdit.TabIndex = 12;
             this.btnEdit.Text = "ویرایش";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -279,6 +281,7 @@
             this.DbGrideCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.DbGrideCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DbGrideCustomer.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.DbGrideCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DbGrideCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -292,6 +295,7 @@
             this.DbGrideCustomer.Location = new System.Drawing.Point(6, 244);
             this.DbGrideCustomer.Name = "DbGrideCustomer";
             this.DbGrideCustomer.RowHeadersVisible = false;
+            this.DbGrideCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DbGrideCustomer.Size = new System.Drawing.Size(810, 257);
             this.DbGrideCustomer.StandardTab = true;
             this.DbGrideCustomer.TabIndex = 3;
@@ -315,14 +319,12 @@
             this.fullname.DataPropertyName = "fullname";
             this.fullname.HeaderText = "نام بیمار";
             this.fullname.Name = "fullname";
-            this.fullname.Width = 200;
             // 
             // mobile
             // 
             this.mobile.DataPropertyName = "mobile";
             this.mobile.HeaderText = "شماره تماس";
             this.mobile.Name = "mobile";
-            this.mobile.Width = 150;
             // 
             // irCode
             // 
@@ -341,7 +343,6 @@
             this.lastUpdate.DataPropertyName = "lastUpdate";
             this.lastUpdate.HeaderText = "آخرین بروز رسانی";
             this.lastUpdate.Name = "lastUpdate";
-            this.lastUpdate.Width = 150;
             // 
             // txtbirthDate
             // 

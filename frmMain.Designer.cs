@@ -29,11 +29,15 @@ namespace NovbatDehi
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.buttonX6 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX5 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX4 = new DevComponents.DotNetBar.ButtonX();
             this.DbGrideTodayFirstCom = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +53,10 @@ namespace NovbatDehi
             this.customer_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerMobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstCome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tozihat = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
@@ -57,6 +64,7 @@ namespace NovbatDehi
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DbGrideTodayFirstCom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DbGrideReserv)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,6 +75,9 @@ namespace NovbatDehi
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.button1);
+            this.groupPanel1.Controls.Add(this.buttonX6);
+            this.groupPanel1.Controls.Add(this.buttonX5);
             this.groupPanel1.Controls.Add(this.buttonX4);
             this.groupPanel1.Controls.Add(this.DbGrideTodayFirstCom);
             this.groupPanel1.Controls.Add(this.label1);
@@ -111,6 +122,57 @@ namespace NovbatDehi
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 45);
+            this.button1.TabIndex = 103;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // buttonX6
+            // 
+            this.buttonX6.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX6.BackColor = System.Drawing.Color.Transparent;
+            this.buttonX6.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonX6.Font = new System.Drawing.Font("IRANSans", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonX6.Location = new System.Drawing.Point(434, 7);
+            this.buttonX6.Name = "buttonX6";
+            this.buttonX6.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(20);
+            this.buttonX6.Size = new System.Drawing.Size(138, 46);
+            this.buttonX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX6.Symbol = "";
+            this.buttonX6.SymbolColor = System.Drawing.Color.DodgerBlue;
+            this.buttonX6.SymbolSize = 15F;
+            this.buttonX6.TabIndex = 102;
+            this.buttonX6.Text = "چاپ بیماران امروز";
+            this.buttonX6.Click += new System.EventHandler(this.buttonX6_Click);
+            // 
+            // buttonX5
+            // 
+            this.buttonX5.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX5.BackColor = System.Drawing.Color.Transparent;
+            this.buttonX5.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonX5.Font = new System.Drawing.Font("IRANSans", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonX5.Location = new System.Drawing.Point(578, 8);
+            this.buttonX5.Name = "buttonX5";
+            this.buttonX5.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(20);
+            this.buttonX5.Size = new System.Drawing.Size(115, 46);
+            this.buttonX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX5.Symbol = "";
+            this.buttonX5.SymbolColor = System.Drawing.Color.Crimson;
+            this.buttonX5.SymbolSize = 15F;
+            this.buttonX5.TabIndex = 101;
+            this.buttonX5.Text = "جستجو";
+            this.buttonX5.Click += new System.EventHandler(this.buttonX5_Click);
+            // 
             // buttonX4
             // 
             this.buttonX4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -119,10 +181,10 @@ namespace NovbatDehi
             this.buttonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonX4.Font = new System.Drawing.Font("IRANSans", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonX4.Location = new System.Drawing.Point(472, 7);
+            this.buttonX4.Location = new System.Drawing.Point(699, 8);
             this.buttonX4.Name = "buttonX4";
             this.buttonX4.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(20);
-            this.buttonX4.Size = new System.Drawing.Size(172, 46);
+            this.buttonX4.Size = new System.Drawing.Size(110, 46);
             this.buttonX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX4.Symbol = "";
             this.buttonX4.SymbolColor = System.Drawing.Color.DarkGreen;
@@ -137,19 +199,20 @@ namespace NovbatDehi
             this.DbGrideTodayFirstCom.AllowUserToDeleteRows = false;
             this.DbGrideTodayFirstCom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.DbGrideTodayFirstCom.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DbGrideTodayFirstCom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DbGrideTodayFirstCom.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DbGrideTodayFirstCom.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DbGrideTodayFirstCom.DefaultCellStyle = dataGridViewCellStyle4;
             this.DbGrideTodayFirstCom.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.DbGrideTodayFirstCom.Location = new System.Drawing.Point(896, 369);
             this.DbGrideTodayFirstCom.MultiSelect = false;
@@ -166,7 +229,6 @@ namespace NovbatDehi
             this.dataGridViewTextBoxColumn4.HeaderText = "ساعت";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 80;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -174,7 +236,6 @@ namespace NovbatDehi
             this.dataGridViewTextBoxColumn5.HeaderText = "کد بیمار";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 90;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -182,7 +243,6 @@ namespace NovbatDehi
             this.dataGridViewTextBoxColumn6.HeaderText = "نام بیمار";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 200;
             // 
             // label1
             // 
@@ -202,6 +262,7 @@ namespace NovbatDehi
             this.DbGrideReserv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.DbGrideReserv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DbGrideReserv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DbGrideReserv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -212,15 +273,17 @@ namespace NovbatDehi
             this.customer_name,
             this.customerMobile,
             this.FirstCome,
+            this.Note,
             this.tozihat});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DbGrideReserv.DefaultCellStyle = dataGridViewCellStyle9;
+            this.DbGrideReserv.ContextMenuStrip = this.contextMenuStrip1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("IRANSans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DbGrideReserv.DefaultCellStyle = dataGridViewCellStyle6;
             this.DbGrideReserv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.DbGrideReserv.Location = new System.Drawing.Point(3, 60);
             this.DbGrideReserv.MultiSelect = false;
@@ -230,7 +293,7 @@ namespace NovbatDehi
             this.DbGrideReserv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DbGrideReserv.Size = new System.Drawing.Size(887, 596);
             this.DbGrideReserv.TabIndex = 96;
-            this.DbGrideReserv.DoubleClick += new System.EventHandler(this.dataGridViewX1_DoubleClick);
+            this.DbGrideReserv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewX1_DoubleClick);
             // 
             // ID
             // 
@@ -239,6 +302,7 @@ namespace NovbatDehi
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             this.ID.Visible = false;
+            this.ID.Width = 50;
             // 
             // _Radif
             // 
@@ -246,7 +310,7 @@ namespace NovbatDehi
             this._Radif.HeaderText = "#";
             this._Radif.Name = "_Radif";
             this._Radif.ReadOnly = true;
-            this._Radif.Width = 60;
+            this._Radif.Width = 47;
             // 
             // _date
             // 
@@ -254,6 +318,7 @@ namespace NovbatDehi
             this._date.HeaderText = "تاریخ";
             this._date.Name = "_date";
             this._date.ReadOnly = true;
+            this._date.Width = 71;
             // 
             // _Time
             // 
@@ -261,6 +326,7 @@ namespace NovbatDehi
             this._Time.HeaderText = "ساعت";
             this._Time.Name = "_Time";
             this._Time.ReadOnly = true;
+            this._Time.Width = 77;
             // 
             // customer_id
             // 
@@ -268,6 +334,7 @@ namespace NovbatDehi
             this.customer_id.HeaderText = "کد بیمار";
             this.customer_id.Name = "customer_id";
             this.customer_id.ReadOnly = true;
+            this.customer_id.Width = 86;
             // 
             // customer_name
             // 
@@ -275,6 +342,7 @@ namespace NovbatDehi
             this.customer_name.HeaderText = "نام بیمار";
             this.customer_name.Name = "customer_name";
             this.customer_name.ReadOnly = true;
+            this.customer_name.Width = 88;
             // 
             // customerMobile
             // 
@@ -282,7 +350,7 @@ namespace NovbatDehi
             this.customerMobile.HeaderText = "شماره بیمار";
             this.customerMobile.Name = "customerMobile";
             this.customerMobile.ReadOnly = true;
-            this.customerMobile.Width = 150;
+            this.customerMobile.Width = 106;
             // 
             // FirstCome
             // 
@@ -290,22 +358,44 @@ namespace NovbatDehi
             this.FirstCome.HeaderText = "بیمار مراجعه اول";
             this.FirstCome.Name = "FirstCome";
             this.FirstCome.ReadOnly = true;
-            this.FirstCome.Width = 150;
+            this.FirstCome.Width = 142;
+            // 
+            // Note
+            // 
+            this.Note.DataPropertyName = "Note";
+            this.Note.HeaderText = "شرح";
+            this.Note.Name = "Note";
+            this.Note.ReadOnly = true;
+            this.Note.Width = 67;
             // 
             // tozihat
             // 
             this.tozihat.DataPropertyName = "tozihat";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.tozihat.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("IRANSans", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.tozihat.DefaultCellStyle = dataGridViewCellStyle5;
             this.tozihat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.tozihat.HeaderText = "توضیحات";
             this.tozihat.Name = "tozihat";
             this.tozihat.ReadOnly = true;
             this.tozihat.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.tozihat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.tozihat.Width = 120;
+            this.tozihat.Width = 99;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 26);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
+            this.toolStripMenuItem1.Text = "حذف نوبت";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // buttonX3
             // 
@@ -315,10 +405,10 @@ namespace NovbatDehi
             this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonX3.Font = new System.Drawing.Font("IRANSans", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonX3.Location = new System.Drawing.Point(650, 7);
+            this.buttonX3.Location = new System.Drawing.Point(815, 8);
             this.buttonX3.Name = "buttonX3";
             this.buttonX3.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(20);
-            this.buttonX3.Size = new System.Drawing.Size(172, 46);
+            this.buttonX3.Size = new System.Drawing.Size(102, 46);
             this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX3.Symbol = "";
             this.buttonX3.SymbolColor = System.Drawing.Color.DarkGreen;
@@ -335,10 +425,10 @@ namespace NovbatDehi
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonX2.Font = new System.Drawing.Font("IRANSans", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonX2.Location = new System.Drawing.Point(828, 7);
+            this.buttonX2.Location = new System.Drawing.Point(923, 7);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(20);
-            this.buttonX2.Size = new System.Drawing.Size(172, 46);
+            this.buttonX2.Size = new System.Drawing.Size(130, 46);
             this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX2.Symbol = "";
             this.buttonX2.SymbolColor = System.Drawing.Color.DarkGreen;
@@ -355,10 +445,10 @@ namespace NovbatDehi
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonX1.Font = new System.Drawing.Font("IRANSans", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonX1.Location = new System.Drawing.Point(1006, 7);
+            this.buttonX1.Location = new System.Drawing.Point(1059, 7);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(20);
-            this.buttonX1.Size = new System.Drawing.Size(172, 46);
+            this.buttonX1.Size = new System.Drawing.Size(119, 46);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.Symbol = "";
             this.buttonX1.SymbolColor = System.Drawing.Color.DarkGreen;
@@ -418,7 +508,6 @@ namespace NovbatDehi
             this.PersianCalender.WeekDaysForeColor = System.Drawing.Color.Blue;
             this.PersianCalender.WeekStartsOn = BehComponents.MonthCalendarX.WeekDays.Saturday;
             this.PersianCalender.DayMouseClick += new BehComponents.MonthCalendarX.OnDayMouseClick(this.PersianCalender_DayMouseClick);
-            this.PersianCalender.Load += new System.EventHandler(this.PersianCalender_Load);
             // 
             // frmMain
             // 
@@ -434,11 +523,14 @@ namespace NovbatDehi
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "سیستم نوبت دهی";
             this.ThemeName = "ControlDefault";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.Resize += new System.EventHandler(this.frmMain_Resize);
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DbGrideTodayFirstCom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DbGrideReserv)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -453,6 +545,14 @@ namespace NovbatDehi
         private DevComponents.DotNetBar.ButtonX buttonX2;
         private DevComponents.DotNetBar.ButtonX buttonX3;
         private DevComponents.DotNetBar.Controls.DataGridViewX DbGrideReserv;
+        private System.Windows.Forms.Label label1;
+        private DevComponents.DotNetBar.Controls.DataGridViewX DbGrideTodayFirstCom;
+        private DevComponents.DotNetBar.ButtonX buttonX4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DevComponents.DotNetBar.ButtonX buttonX6;
+        private DevComponents.DotNetBar.ButtonX buttonX5;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn _Radif;
         private System.Windows.Forms.DataGridViewTextBoxColumn _date;
@@ -461,12 +561,10 @@ namespace NovbatDehi
         private System.Windows.Forms.DataGridViewTextBoxColumn customer_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerMobile;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstCome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Note;
         private System.Windows.Forms.DataGridViewButtonColumn tozihat;
-        private System.Windows.Forms.Label label1;
-        private DevComponents.DotNetBar.Controls.DataGridViewX DbGrideTodayFirstCom;
-        private DevComponents.DotNetBar.ButtonX buttonX4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

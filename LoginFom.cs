@@ -51,7 +51,9 @@ namespace NovbatDehi
                 //    _myMessage.ShowDialog();
                 //}
             }
+#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
+#pragma warning restore CS0168 // The variable 'exception' is declared but never used
             {
                 _myMessage.SetMsg(MsgBoxType.Error, "خطایی رخ داده ورودی ها را چک کنید", MsgBoxButtonType.OK);
                 _myMessage.ShowDialog();

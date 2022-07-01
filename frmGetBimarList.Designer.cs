@@ -119,6 +119,7 @@
             this.DbGrideCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.DbGrideCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DbGrideCustomer.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.DbGrideCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DbGrideCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -137,6 +138,7 @@
             this.DbGrideCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DbGrideCustomer.Size = new System.Drawing.Size(803, 356);
             this.DbGrideCustomer.TabIndex = 3;
+            this.DbGrideCustomer.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DbGrideCustomer_ColumnHeaderMouseClick);
             // 
             // id
             // 
@@ -159,7 +161,6 @@
             this.fullname.HeaderText = "نام بیمار";
             this.fullname.Name = "fullname";
             this.fullname.ReadOnly = true;
-            this.fullname.Width = 200;
             // 
             // mobile
             // 
@@ -167,7 +168,6 @@
             this.mobile.HeaderText = "شماره تماس";
             this.mobile.Name = "mobile";
             this.mobile.ReadOnly = true;
-            this.mobile.Width = 150;
             // 
             // irCode
             // 
@@ -189,7 +189,6 @@
             this.lastUpdate.HeaderText = "آخرین بروز رسانی";
             this.lastUpdate.Name = "lastUpdate";
             this.lastUpdate.ReadOnly = true;
-            this.lastUpdate.Width = 150;
             // 
             // label1
             // 

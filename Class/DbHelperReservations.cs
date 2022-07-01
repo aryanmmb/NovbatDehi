@@ -34,7 +34,9 @@ namespace NovbatDehi.Class
                 _mydb.Close_Db();
                 return true;
             }
+#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
+#pragma warning restore CS0168 // The variable 'exception' is declared but never used
             {
                 return false;
             }
@@ -117,7 +119,9 @@ namespace NovbatDehi.Class
                 _mydb.Close_Db();
                 return locaList;
             }
+#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
+#pragma warning restore CS0168 // The variable 'exception' is declared but never used
             {
                 return null;
             }
@@ -166,7 +170,9 @@ namespace NovbatDehi.Class
                 _mydb.Close_Db();
                 return true;
             }
+#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
+#pragma warning restore CS0168 // The variable 'exception' is declared but never used
             {
                 return false;
             }

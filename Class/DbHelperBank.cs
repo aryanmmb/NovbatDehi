@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
-
+ 
 namespace NovbatDehi.Class
 {
     public class DbHelperCustomers
@@ -33,7 +32,9 @@ namespace NovbatDehi.Class
                 _mydb.Close_Db();
                 return true;
             }
+#pragma warning disable CS0168 // The variable 'exception' is declared but never used
             catch (Exception exception)
+#pragma warning restore CS0168 // The variable 'exception' is declared but never used
             {
                 return false;
             }
@@ -78,7 +79,7 @@ namespace NovbatDehi.Class
             try
             {
                 int maxid = -1;
-                Customer tmpResult = null;
+
                 _mydb.Open_Db();
                 SqlCommand cmd = new SqlCommand(" SELECT ISNULL(MAX(code), 0) + 1 as maxcode FROM[customers]", _mydb.GetConnection_Db());
                 cmd.CommandType = CommandType.Text;
@@ -90,7 +91,9 @@ namespace NovbatDehi.Class
                 _mydb.Close_Db();
                 return maxid;
             }
+#pragma warning disable CS0168 // The variable 'e' is declared but never used
             catch (Exception e)
+#pragma warning restore CS0168 // The variable 'e' is declared but never used
             {
                 return -1;
             }
@@ -101,7 +104,7 @@ namespace NovbatDehi.Class
             {
                 _mydb.Open_Db();
                 List<Customer> locaList = new List<Customer>();
-                SqlCommand cmd = new SqlCommand("select * from Customers", _mydb.GetConnection_Db());
+                SqlCommand cmd = new SqlCommand("select * from Customers order by code desc", _mydb.GetConnection_Db());
                 cmd.CommandType = CommandType.Text;
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())

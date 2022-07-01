@@ -51,4 +51,12 @@ I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\bin\Debug\MartinCostello.SqlLoc
 I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\bin\Debug\MartinCostello.SqlLocalDb.xml
 I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\bin\Debug\en-GB\MartinCostello.SqlLocalDb.resources.dll
 I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.exe.config
-I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.csproj.AssemblyReference.cache
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\bin\Debug\Stimulsoft.Report.Web.dll
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.frmGetReserverReport.resources
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\obj\x86\Debug\NovbatDehi.frmSendFileToFtp.resources
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\bin\Debug\Rebex.Common.dll
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\bin\Debug\Rebex.Ftp.dll
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\bin\Debug\Rebex.Networking.dll
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\bin\Debug\Rebex.Common.xml
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\bin\Debug\Rebex.Ftp.xml
+I:\Project Danehjo\Ponisha\NovbatDehi\NovbatDehi\bin\Debug\Rebex.Networking.xml
